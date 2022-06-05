@@ -6,6 +6,10 @@ body[scheme=vkcom_dark] {
   --backgroundInformationBlock: #303030;
 }
 
+body[scheme="space_gray"] {
+  --backgroundInformationBlock: #303030;
+}
+
 .informationBlock {
   display: flex;
   margin: 16px;

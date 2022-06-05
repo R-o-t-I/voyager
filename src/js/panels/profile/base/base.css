@@ -6,6 +6,10 @@ body[scheme=vkcom_dark] {
   --backgroundInformationBlock: #303030;
 }
 
+body[scheme="space_gray"] {
+  --backgroundInformationBlock: #303030;
+}
+
 .profileInfoBlock {
   display: flex;
   flex-direction: column;
@@ -99,7 +103,7 @@ body[scheme=vkcom_dark] {
 }
 
 .iconChevronDescInfo {
-  margin-top: 3px;
+  margin: auto;
 }
 
 .blockListCell {
