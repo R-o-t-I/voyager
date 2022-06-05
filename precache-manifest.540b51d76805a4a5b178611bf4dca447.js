@@ -8,8 +8,8 @@ self.__precacheManifest = [
     "url": "/voyager/static/js/main.e652952e.chunk.js"
   },
   {
-    "revision": "fb04a48d483321d75073",
-    "url": "/voyager/static/js/runtime~main.fde56aaf.js"
+    "revision": "faac928cd179a7ad592f",
+    "url": "/voyager/static/js/runtime~main.b390443e.js"
   },
   {
     "revision": "4102cb09a7df93771b54",
@@ -20,19 +20,19 @@ self.__precacheManifest = [
     "url": "/voyager/static/js/2.cde8e150.chunk.js"
   },
   {
-    "revision": "f391c20fb5ebb9e8df68",
-    "url": "/voyager/static/css/3.30f61c5d.chunk.css"
+    "revision": "b6fb5a8012df83f0e5ce",
+    "url": "/voyager/static/css/3.b2a00555.chunk.css"
   },
   {
-    "revision": "f391c20fb5ebb9e8df68",
+    "revision": "b6fb5a8012df83f0e5ce",
     "url": "/voyager/static/js/3.238a9728.chunk.js"
   },
   {
-    "revision": "267704c379c92eebf116",
-    "url": "/voyager/static/css/4.06e786cb.chunk.css"
+    "revision": "66d4906f253de898c11a",
+    "url": "/voyager/static/css/4.c60aead4.chunk.css"
   },
   {
-    "revision": "267704c379c92eebf116",
+    "revision": "66d4906f253de898c11a",
     "url": "/voyager/static/js/4.a4716269.chunk.js"
   },
   {
@@ -68,7 +68,7 @@ self.__precacheManifest = [
     "url": "/voyager/static/media/religion.854fe440.svg"
   },
   {
-    "revision": "8319f52ad1a81817a2ead279e19cf709",
+    "revision": "ce675578531ec8ddb2d5e92875c4e1b9",
     "url": "/voyager/index.html"
   }
 ];
