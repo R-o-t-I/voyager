@@ -1,0 +1,215 @@
+:root {
+  --backgroundInformationBlock: #F9FAFB;
+}
+
+body[scheme=vkcom_dark] {
+  --backgroundInformationBlock: #303030;
+}
+
+.informationBlock {
+  display: flex;
+  margin: 16px;
+  grid-column-gap: 12px;
+}
+
+.backgroundInformationBlock {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 16px;
+  background-color: var(--backgroundInformationBlock);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.03);
+}
+
+.backgroundIconWeather {
+  position: absolute;
+  display: flex;
+  top: -10px;
+  right: -10px;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(208, 242, 255, 0.2);
+  border-radius: 100%;
+  z-index: 1;
+}
+
+.backgroundIconDate {
+  position: absolute;
+  display: flex;
+  top: -10px;
+  right: -10px;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 231, 217, 0.2);;
+  border-radius: 100%;
+  z-index: 1;
+}
+
+.iconWeather {
+  margin-top: 15px;
+  margin-left: 10px;
+  color: #D0F2FF;
+  z-index: 2;
+}
+
+.iconDate {
+  margin-top: 15px;
+  margin-left: 10px;
+  color: #FFE7D9;
+  z-index: 2;
+}
+
+.blockInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 12px;
+  z-index: 3;
+}
+
+.titleInfo {
+  font-size: 20px;
+  font-weight: 500;
+  z-index: 3;
+}
+
+.blockDescInfo {
+  margin-top: 6px;
+  z-index: 3;
+}
+
+.descInfo {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text_secondary);
+  z-index: 3;
+}
+
+.blockCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 16px;
+  grid-column-gap: 12px;
+  grid-row-gap: 12px;
+}
+
+.card {
+  width: calc(50% - 6px);
+  height: 150px;
+  border-radius: 16px;
+  background-color: #FFE7D9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.blockCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 12px;
+}
+
+.iconCard {
+  filter: invert(12%) sepia(55%) saturate(4301%) hue-rotate(326deg) brightness(83%) contrast(102%);
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  display: block;
+  background-repeat: no-repeat;
+}
+
+.titleCard {
+  color: #7A0C2E;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.card2 {
+  width: calc(50% - 6px);
+  height: 150px;
+  border-radius: 16px;
+  background-color: #D1E9FC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.iconCard2 {
+  filter: invert(14%) sepia(79%) saturate(2248%) hue-rotate(213deg) brightness(90%) contrast(109%);
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  display: block;
+  background-repeat: no-repeat;
+}
+
+.titleCard2 {
+  color: #04297A;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  display: block;
+  background-repeat: no-repeat;
+}
+
+.card3 {
+  width: calc(50% - 6px);
+  height: 150px;
+  border-radius: 16px;
+  background-color: #FFF7CD;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.iconCard3 {
+  filter: invert(23%) sepia(100%) saturate(1067%) hue-rotate(23deg) brightness(100%) contrast(99%);
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  display: block;
+  background-repeat: no-repeat;
+}
+
+.titleCard3 {
+  color: #7A4F01;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.card4 {
+  width: calc(50% - 6px);
+  height: 150px;
+  border-radius: 16px;
+  background-color: #D0F2FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.iconCard4 {
+  filter: invert(15%) sepia(61%) saturate(2510%) hue-rotate(211deg) brightness(91%) contrast(112%);
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  display: block;
+  background-repeat: no-repeat;
+}
+
+.titleCard4 {
+  color: #04297A;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}

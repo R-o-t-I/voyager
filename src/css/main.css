@@ -1,0 +1,33 @@
+:root {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently not supported by any browser */
+}
+
+body[scheme=vkcom_dark] {
+
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.tabbarStyle {
+  border-radius: 16px 16px 0px 0px;
+  overflow: hidden;
+  border-top: solid var(--thin-border) var(--input_border);
+}
+
+.div-center {
+  display: table;
+  margin: 0 auto;
+}
+
+.activeViewCell {
+  background-color: var(--button_secondary_background);
+  border-radius: 8px;
+}
