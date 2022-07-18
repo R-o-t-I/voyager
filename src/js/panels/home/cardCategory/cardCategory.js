@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { withRouter } from "@reyzitwo/react-router-vkminiapps";
-import "./cardCategory.scss";
+import style from "./cardCategory.module.scss";
 
 import {
   PanelHeader,
@@ -36,24 +36,24 @@ function CardCategoryPanel({ router }) {
           <PanelHeaderBack
             label={platform === VKCOM && <div>Назад</div>}
             onClick={() => router.toBack()}
-            className="iconHeader"
+            className={style.iconHeader}
           />
         }
       >
-        <div className="textHeader">Рестораны</div>
+        <div className={style.textHeader}>Рестораны</div>
       </PanelHeader>
 
       <div>
-        <div className="blockImgCategory" />
+        <div className={style.blockImgCategory} />
         <img
-          className="imgCategory"
+          className={style.imgCategory}
           src="https://media.admagazine.ru/photos/61407d5e9ecf4e1934c46f10/16:9/w_2560%2Cc_limit/IMG_7838.jpg"
         />
       </div>
-      <div className="blockContent">
+      <div className={style.blockContent}>
         {platform === VKCOM && (
           <>
-            {/*<Spacing separator="bottom" className="separatorSearch" />*/}
+            {/*<Spacing separator="bottom" className={style.separatorSearch} />*/}
             <Search />
           </>
         )}
@@ -73,12 +73,12 @@ function CardCategoryPanel({ router }) {
         >
           Каталог
         </Header>
-        <div className="allCategoryCards">
-          <div className="cardBlock">
+        <div className={style.allCategoryCards}>
+          <div className={style.cardBlock}>
             <div style={{ position: "relative" }}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Grand_Cascade_of_Peterhof_01.jpg/640px-Grand_Cascade_of_Peterhof_01.jpg"
-                className="imgCard"
+                className={style.imgCard}
               />
               <Dropdown
                 placement="bottom-end"
@@ -99,24 +99,24 @@ function CardCategoryPanel({ router }) {
                   </List>
                 }
               >
-                <div className="iconMoreCard">
+                <div className={style.iconMoreCard}>
                   <IconButton>
                     <Icon28MoreHorizontal />
                   </IconButton>
                 </div>
               </Dropdown>
             </div>
-            <div className="infoCard">
-              <div className="title">Музей "Государственный Эрмитаж"</div>
-              <div className="category">Художественные</div>
-              <div className="address">Дворцовая пл., 2</div>
+            <div className={style.infoCard}>
+              <div className={style.title}>Музей "Государственный Эрмитаж"</div>
+              <div className={style.category}>Художественные</div>
+              <div className={style.address}>Дворцовая пл., 2</div>
             </div>
           </div>
-          <div className="cardBlock">
+          <div className={style.cardBlock}>
             <div style={{ position: "relative" }}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Grand_Cascade_of_Peterhof_01.jpg/640px-Grand_Cascade_of_Peterhof_01.jpg"
-                className="imgCard"
+                className={style.imgCard}
               />
               <Dropdown
                 placement="bottom-end"
@@ -137,17 +137,17 @@ function CardCategoryPanel({ router }) {
                   </List>
                 }
               >
-                <div className="iconMoreCard">
+                <div className={style.iconMoreCard}>
                   <IconButton>
                     <Icon28MoreHorizontal />
                   </IconButton>
                 </div>
               </Dropdown>
             </div>
-            <div className="infoCard">
-              <div className="title">title</div>
-              <div className="category">category</div>
-              <div className="address">locations</div>
+            <div className={style.infoCard}>
+              <div className={style.title}>title</div>
+              <div className={style.category}>category</div>
+              <div className={style.address}>locations</div>
             </div>
           </div>
         </div>

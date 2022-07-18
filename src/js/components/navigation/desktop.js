@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { withRouter } from "@reyzitwo/react-router-vkminiapps";
-import "./navigation.scss";
+import style from "./navigation.module.scss";
 
 import {
   SplitCol,
@@ -22,16 +22,18 @@ function DesktopNavigation({ router }) {
   const hasHeader = useSelector((state) => state.main.hasHeader);
 
   return (
-    <SplitCol fixed width="252px" maxWidth="252px" className="splitCol">
+    <SplitCol fixed width="252px" maxWidth="252px" className={style.splitCol}>
       <Panel id="menuDesktop">
         {hasHeader && <PanelHeader />}
         <Group>
-          <List className="menuDesktop">
+          <List className={style.menuDesktop}>
             <Cell
               onClick={() => router.toView("home")}
               disabled={router.activeView === "home"}
               before={<Icon28EternalFlameOutline />}
-              className={router.activeView === "home" ? "activeViewCell" : ""}
+              className={
+                router.activeView === "home" ? style.activeViewCell : ""
+              }
             >
               Места
             </Cell>
@@ -40,7 +42,9 @@ function DesktopNavigation({ router }) {
               onClick={() => router.toView("map")}
               disabled={router.activeView === "map"}
               before={<Icon28LocationMapOutline />}
-              className={router.activeView === "map" ? "activeViewCell" : ""}
+              className={
+                router.activeView === "map" ? style.activeViewCell : ""
+              }
             >
               Карта
             </Cell>
@@ -50,7 +54,7 @@ function DesktopNavigation({ router }) {
               disabled={router.activeView === "profile"}
               before={<Icon28Profile />}
               className={
-                router.activeView === "profile" ? "activeViewCell" : ""
+                router.activeView === "profile" ? style.activeViewCell : ""
               }
             >
               Профиль

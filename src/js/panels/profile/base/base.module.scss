@@ -1,9 +1,13 @@
-:root {
+body[scheme="vkcom_light"] {
   --backgroundInformationBlock: #ffffff;
 }
 
-body[scheme=vkcom_dark] {
+body[scheme="vkcom_dark"] {
   --backgroundInformationBlock: #303030;
+}
+
+body[scheme="bright_light"] {
+  --backgroundInformationBlock: #ffffff;
 }
 
 body[scheme="space_gray"] {

@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { withRouter } from '@reyzitwo/react-router-vkminiapps';
-import './base.css';
+import { withRouter } from "@reyzitwo/react-router-vkminiapps";
+import style from "./base.module.scss";
 
 import {
   PanelHeader,
@@ -29,34 +29,34 @@ import {
   Icon28SettingsOutline,
   Icon28TicketOutline,
   Icon28WriteSquareOutline,
-} from '@vkontakte/icons';
+} from "@vkontakte/icons";
 
-import bridge from '@vkontakte/vk-bridge';
+import bridge from "@vkontakte/vk-bridge";
 
 import { set } from "../../../reducers/mainReducer";
 
-let isInfoUser = false
+let isInfoUser = false;
 
 function ProfilePanelBase({ router }) {
-  const mainStorage = useSelector((state) => state.main)
-  const platform = useSelector((state) => state.main.platform)
-  const dispatch = useDispatch()
+  const mainStorage = useSelector((state) => state.main);
+  const platform = useSelector((state) => state.main.platform);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!isInfoUser) {
-      getInfoUser()
+      getInfoUser();
     }
-  }, [])
+  }, []);
 
   async function getInfoUser() {
-    router.toPopout(<ScreenSpinner/>)
+    router.toPopout(<ScreenSpinner />);
 
-    let user_info = await bridge.send('VKWebAppGetUserInfo');
-    user_info.name = user_info.first_name + ' ' + user_info.last_name
-    dispatch(set({ key: 'infoUser', value: user_info }))
+    let user_info = await bridge.send("VKWebAppGetUserInfo");
+    user_info.name = user_info.first_name + " " + user_info.last_name;
+    dispatch(set({ key: "infoUser", value: user_info }));
 
-    isInfoUser = true
-    router.toPopout()
+    isInfoUser = true;
+    router.toPopout();
   }
 
   return (
@@ -65,7 +65,11 @@ function ProfilePanelBase({ router }) {
         separator={false}
         left={
           <PanelHeaderButton
-            label={platform === VKCOM && <div style={{marginLeft: 6}}>Настройки</div>}
+            label={
+              platform === VKCOM && (
+                <div style={{ marginLeft: 6 }}>Настройки</div>
+              )
+            }
           >
             <Icon28SettingsOutline />
           </PanelHeaderButton>
@@ -74,52 +78,64 @@ function ProfilePanelBase({ router }) {
         Профиль
       </PanelHeader>
       <Group>
-        <div className="profileInfoBlock">
-          <Avatar size={90} src={mainStorage.infoUser.photo_200}/>
-          <Title 
-            className='nameUser'
-            level="2" 
-            weight="medium"
-          >
+        <div className={style.profileInfoBlock}>
+          <Avatar size={90} src={mainStorage.infoUser.photo_200} />
+          <Title className={style.nameUser} level="2" weight="medium">
             {mainStorage.infoUser.name}
           </Title>
         </div>
-        <div className="informationBlock">
-          <div className="backgroundInformationBlock">
-            <Tappable className="tappable">
-              <div className="backgroundIconFavorites">
-                <Icon28LikeOutline width={35} height={35} className="iconFavorites" />
+        <div className={style.informationBlock}>
+          <div className={style.backgroundInformationBlock}>
+            <Tappable className={style.tappable}>
+              <div className={style.backgroundIconFavorites}>
+                <Icon28LikeOutline
+                  width={35}
+                  height={35}
+                  className={style.iconFavorites}
+                />
               </div>
-              <div className="blockInfo">
-                <div className="titleInfo">5</div>
-                <div className="blockDescInfo">
-                  <div className="descInfo">
+              <div className={style.blockInfo}>
+                <div className={style.titleInfo}>5</div>
+                <div className={style.blockDescInfo}>
+                  <div className={style.descInfo}>
                     <div>избранное</div>
-                    <div><Icon16ChevronOutline className="iconChevronDescInfo" /></div>
+                    <div>
+                      <Icon16ChevronOutline
+                        className={style.iconChevronDescInfo}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </Tappable>
           </div>
-          <div className="backgroundInformationBlock">
-            <Tappable className="tappable">
-              <div className="backgroundIconVisited">
-                <Icon28ListCheckOutline width={35} height={35} className="iconVisited" />
+          <div className={style.backgroundInformationBlock}>
+            <Tappable className={style.tappable}>
+              <div className={style.backgroundIconVisited}>
+                <Icon28ListCheckOutline
+                  width={35}
+                  height={35}
+                  className={style.iconVisited}
+                />
               </div>
-              <div className="blockInfo">
-                <div className="titleInfo">3</div>
-                <div className="blockDescInfo">
-                  <div className="descInfo">
+              <div className={style.blockInfo}>
+                <div className={style.titleInfo}>3</div>
+                <div className={style.blockDescInfo}>
+                  <div className={style.descInfo}>
                     <div>мест посетил</div>
-                    <div><Icon16ChevronOutline className="iconChevronDescInfo"/></div>
+                    <div>
+                      <Icon16ChevronOutline
+                        className={style.iconChevronDescInfo}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </Tappable>
           </div>
         </div>
-        <List className="blockListCell">
-          <SimpleCell 
+        <List className={style.blockListCell}>
+          <SimpleCell
             before={<Icon28TicketOutline />}
             indicator={<Counter>4</Counter>}
             expandable
@@ -127,7 +143,7 @@ function ProfilePanelBase({ router }) {
           >
             Мои билеты
           </SimpleCell>
-          <SimpleCell 
+          <SimpleCell
             before={<Icon28WriteSquareOutline />}
             indicator={<Counter>4</Counter>}
             expandable
@@ -135,7 +151,7 @@ function ProfilePanelBase({ router }) {
           >
             Мои отзывы
           </SimpleCell>
-          <SimpleCell 
+          <SimpleCell
             before={<Icon28ListLikeOutline />}
             indicator={<Counter>4</Counter>}
             expandable
@@ -143,7 +159,7 @@ function ProfilePanelBase({ router }) {
           >
             Хочу посетить
           </SimpleCell>
-          <SimpleCell 
+          <SimpleCell
             before={<Icon28CalendarOutline />}
             indicator={<Counter>4</Counter>}
             expandable
@@ -153,9 +169,14 @@ function ProfilePanelBase({ router }) {
           </SimpleCell>
         </List>
       </Group>
-      <Footer className="footer">
+      <Footer className={style.footer}>
         <div>Версия 1.0.0</div>
-        <div>Сделано с ❤️️ от <Link href="https://vk.com/skyreglis" target="__blank">SkyReglis Studio</Link></div>
+        <div>
+          Сделано с ❤️️ от{" "}
+          <Link href="https://vk.com/skyreglis" target="__blank">
+            SkyReglis Studio
+          </Link>
+        </div>
       </Footer>
     </>
   );

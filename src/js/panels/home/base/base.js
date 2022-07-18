@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { withRouter } from "@reyzitwo/react-router-vkminiapps";
-import "./base.scss";
+import style from "./base.module.scss";
 
 import { Group, PanelHeader, PanelHeaderButton, VKCOM } from "@vkontakte/vkui";
 
@@ -37,103 +37,108 @@ function HomePanel({ router }) {
         Места
       </PanelHeader>
       <Group>
-        <div className="informationBlock">
-          <div className="backgroundInformationBlock">
-            <div className="backgroundIconWeather">
+        <div className={style.informationBlock}>
+          <div className={style.backgroundInformationBlock}>
+            <div className={style.backgroundIconWeather}>
               <Icon28CloudOutline
                 width={35}
                 height={35}
-                className="iconWeather"
+                className={style.iconWeather}
               />
             </div>
-            <div className="blockInfo">
-              <div className="titleInfo">20°</div>
-              <div className="blockDescInfo">
-                <div className="descInfo">вечером 16°</div>
-                <div className="descInfo">ночью 9°</div>
+            <div className={style.blockInfo}>
+              <div className={style.titleInfo}>20°</div>
+              <div className={style.blockDescInfo}>
+                <div className={style.descInfo}>вечером 16°</div>
+                <div className={style.descInfo}>ночью 9°</div>
               </div>
             </div>
           </div>
-          <div className="backgroundInformationBlock">
-            <div className="backgroundIconDate">
+          <div className={style.backgroundInformationBlock}>
+            <div className={style.backgroundIconDate}>
               <Icon28CalendarOutline
                 width={35}
                 height={35}
-                className="iconDate"
+                className={style.iconDate}
               />
             </div>
-            <div className="blockInfo">
-              <div className="titleInfo">5 июня</div>
-              <div className="blockDescInfo">
-                <div className="descInfo">воскресенье</div>
+            <div className={style.blockInfo}>
+              <div className={style.titleInfo}>5 июня</div>
+              <div className={style.blockDescInfo}>
+                <div className={style.descInfo}>воскресенье</div>
               </div>
             </div>
           </div>
         </div>
-        <div className="blockCards">
-          <div className="card" onClick={() => router.toPanel("cardCategory")}>
-            <div className="blockCard">
+        <div className={style.blockCards}>
+          <div
+            className={style.card}
+            onClick={() => router.toPanel("cardCategory")}
+          >
+            <div className={style.blockCard}>
               <div>
-                <img src={restaurant} className="iconCard" />
+                <img src={restaurant} className={style.iconCard} />
               </div>
-              <div className="titleCard">Рестораны</div>
+              <div className={style.titleCard}>Рестораны</div>
             </div>
           </div>
-          <div className="card2">
-            <div className="blockCard">
+          <div className={style.card2}>
+            <div className={style.blockCard}>
               <div>
-                <img src={culturalHeritage} className="iconCard2" />
+                <img src={culturalHeritage} className={style.iconCard2} />
               </div>
-              <div className="titleCard2">Объекты культурного наследия</div>
+              <div className={style.titleCard2}>
+                Объекты культурного наследия
+              </div>
             </div>
           </div>
-          <div className="card3">
-            <div className="blockCard">
+          <div className={style.card3}>
+            <div className={style.blockCard}>
               <div>
-                <img src={religion} className="iconCard3" />
+                <img src={religion} className={style.iconCard3} />
               </div>
-              <div className="titleCard3">Религиозные организации</div>
+              <div className={style.titleCard3}>Религиозные организации</div>
             </div>
           </div>
-          <div className="card4">
-            <div className="blockCard">
+          <div className={style.card4}>
+            <div className={style.blockCard}>
               <div>
-                <img src={religion} className="iconCard4" />
+                <img src={religion} className={style.iconCard4} />
               </div>
-              <div className="titleCard4">Выстовочные залы</div>
+              <div className={style.titleCard4}>Выстовочные залы</div>
             </div>
           </div>
 
-          <div className="card">
-            <div className="blockCard">
+          <div className={style.card}>
+            <div className={style.blockCard}>
               <div>
-                <img src={restaurant} className="iconCard" />
+                <img src={restaurant} className={style.iconCard} />
               </div>
-              <div className="titleCard">Музеи</div>
+              <div className={style.titleCard}>Музеи</div>
             </div>
           </div>
-          <div className="card2">
-            <div className="blockCard">
+          <div className={style.card2}>
+            <div className={style.blockCard}>
               <div>
-                <img src={culturalHeritage} className="iconCard2" />
+                <img src={culturalHeritage} className={style.iconCard2} />
               </div>
-              <div className="titleCard2">Театры</div>
+              <div className={style.titleCard2}>Театры</div>
             </div>
           </div>
-          <div className="card3">
-            <div className="blockCard">
+          <div className={style.card3}>
+            <div className={style.blockCard}>
               <div>
-                <img src={religion} className="iconCard3" />
+                <img src={religion} className={style.iconCard3} />
               </div>
-              <div className="titleCard3">Религиозные организации</div>
+              <div className={style.titleCard3}>Религиозные организации</div>
             </div>
           </div>
-          <div className="card4">
-            <div className="blockCard">
+          <div className={style.card4}>
+            <div className={style.blockCard}>
               <div>
-                <img src={religion} className="iconCard4" />
+                <img src={religion} className={style.iconCard4} />
               </div>
-              <div className="titleCard4">Выстовочные залы</div>
+              <div className={style.titleCard4}>Выстовочные залы</div>
             </div>
           </div>
         </div>
