@@ -8,12 +8,57 @@
   user-select: none; /* Non-prefixed version, currently not supported by any browser */
 }
 
-body[scheme=vkcom_dark] {
+body[scheme="vkcom_light"] {
+  --background_panel: #f4f8fc !important;
+  --background_content_block: #FFFFFF !important;
+}
 
+body[scheme="vkcom_dark"] {
+  --background_panel: #141414 !important;
+  --background_content_block: #303030 !important;
+}
+
+body[scheme="bright_light"] {
+  --background_panel: #f4f8fc !important;
+  --background_content_block: #FFFFFF !important;
+}
+
+body[scheme="space_gray"] {
+  --background_panel: #141414 !important;
+  --background_content_block: #303030 !important;
 }
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.vkuiPanel__in, .vkuiSplitLayout {
+  background: var(--background_panel) !important;
+}
+
+.vkuiGroup--card>.vkuiGroup__inner {
+  background: var(--background_panel) !important;
+}
+
+.vkuiGroup--card>.vkuiGroup__inner::after {
+  content: none;
+}
+
+.vkui, .vkui>body, .vkui__root, .vkui__portal-root {
+  background: var(--background_panel) !important;
+}
+
+.vkuiPanelHeader--vkcom.vkuiPanelHeader--sizeX-regular:not(.vkuiModalPageHeader__in) .vkuiPanelHeader__in {
+  border: none !important;
+  box-shadow: none;
+}
+
+.vkuiPanelHeader__in {
+  background: #ffffff00;
+}
+
+.vkuiPanelHeader--vkcom.vkuiPanelHeader--sizeX-regular:not(.vkuiModalPageHeader__in)::after {
+  background: #ffffff00;
 }
 
 .tabbarStyle {
@@ -27,7 +72,12 @@ body[scheme=vkcom_dark] {
   margin: 0 auto;
 }
 
-.activeViewCell {
-  background-color: var(--button_secondary_background);
-  border-radius: 8px;
+.splitCol {
+  margin-left: 12px;
+}
+
+.menuDesktop {
+  background: var(--background_content_block);
+  border-radius: 16px;
+  padding: 8px;
 }

@@ -1,5 +1,5 @@
 :root {
-  --backgroundInformationBlock: #F9FAFB;
+  --backgroundInformationBlock: #ffffff;
 }
 
 body[scheme=vkcom_dark] {
@@ -33,7 +33,7 @@ body[scheme="space_gray"] {
   right: -10px;
   width: 60px;
   height: 60px;
-  background-color: rgba(208, 242, 255, 0.2);
+  background-color: rgba(185, 236, 255, 0.2);
   border-radius: 100%;
   z-index: 1;
 }
@@ -45,7 +45,7 @@ body[scheme="space_gray"] {
   right: -10px;
   width: 60px;
   height: 60px;
-  background-color: rgba(255, 231, 217, 0.2);;
+  background-color: rgba(255, 212, 187, 0.2);;
   border-radius: 100%;
   z-index: 1;
 }
@@ -53,14 +53,14 @@ body[scheme="space_gray"] {
 .iconWeather {
   margin-top: 15px;
   margin-left: 10px;
-  color: #D0F2FF;
+  color: rgb(185, 236, 255);
   z-index: 2;
 }
 
 .iconDate {
   margin-top: 15px;
   margin-left: 10px;
-  color: #FFE7D9;
+  color: rgb(255, 212, 187);
   z-index: 2;
 }
 
@@ -123,7 +123,7 @@ body[scheme="space_gray"] {
   filter: invert(12%) sepia(55%) saturate(4301%) hue-rotate(326deg) brightness(83%) contrast(102%);
   width: 40px;
   height: 40px;
-  margin: 5px;
+  margin: 8px;
   display: block;
   background-repeat: no-repeat;
 }
@@ -150,7 +150,7 @@ body[scheme="space_gray"] {
   filter: invert(14%) sepia(79%) saturate(2248%) hue-rotate(213deg) brightness(90%) contrast(109%);
   width: 40px;
   height: 40px;
-  margin: 5px;
+  margin: 8px;
   display: block;
   background-repeat: no-repeat;
 }
@@ -179,7 +179,7 @@ body[scheme="space_gray"] {
   filter: invert(23%) sepia(100%) saturate(1067%) hue-rotate(23deg) brightness(100%) contrast(99%);
   width: 40px;
   height: 40px;
-  margin: 5px;
+  margin: 8px;
   display: block;
   background-repeat: no-repeat;
 }
@@ -206,7 +206,7 @@ body[scheme="space_gray"] {
   filter: invert(15%) sepia(61%) saturate(2510%) hue-rotate(211deg) brightness(91%) contrast(112%);
   width: 40px;
   height: 40px;
-  margin: 5px;
+  margin: 8px;
   display: block;
   background-repeat: no-repeat;
 }

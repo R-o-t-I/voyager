@@ -1,5 +1,5 @@
 :root {
-  --backgroundInformationBlock: #F9FAFB;
+  --backgroundInformationBlock: #ffffff;
 }
 
 body[scheme=vkcom_dark] {
@@ -43,7 +43,7 @@ body[scheme="space_gray"] {
   right: -10px;
   width: 60px;
   height: 60px;
-  background-color: rgba(208, 242, 255, 0.2);
+  background-color: rgba(255, 200, 218, 0.2);
   border-radius: 100%;
   z-index: 1;
 }
@@ -55,7 +55,7 @@ body[scheme="space_gray"] {
   right: -10px;
   width: 60px;
   height: 60px;
-  background-color: rgba(255, 231, 217, 0.2);;
+  background-color: rgba(167, 219, 167, 0.2);;
   border-radius: 100%;
   z-index: 1;
 }
@@ -63,14 +63,14 @@ body[scheme="space_gray"] {
 .iconFavorites {
   margin-top: 15px;
   margin-left: 10px;
-  color: #D0F2FF;
+  color: rgb(255, 200, 218);
   z-index: 2;
 }
 
 .iconVisited {
   margin-top: 15px;
   margin-left: 10px;
-  color: #FFE7D9;
+  color: rgb(167, 219, 167);
   z-index: 2;
 }
 

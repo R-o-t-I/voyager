@@ -1,28 +1,24 @@
-import React, { useState } from 'react';
-import { withRouter } from '@reyzitwo/react-router-vkminiapps';
-import './base.css';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { withRouter } from "@reyzitwo/react-router-vkminiapps";
+import "./base.scss";
 
-import { 
-  Group,
-  PanelHeader,
-  PanelHeaderButton,
-} from '@vkontakte/vkui'
+import { Group, PanelHeader, PanelHeaderButton, VKCOM } from "@vkontakte/vkui";
 
 import {
-  Icon28BankOutline,
   Icon28CalendarOutline,
   Icon28CloudOutline,
-  Icon28MortarOutline,
-  Icon28SearchOutline
-} from '@vkontakte/icons';
+  Icon28SearchOutline,
+} from "@vkontakte/icons";
 
-import restaurant from '../../../../img/icon/restaurant.svg';
-import culturalHeritage from '../../../../img/icon/culturalHeritage.svg';
-import religion from '../../../../img/icon/religion.svg';
+import restaurant from "../../../../img/icon/restaurant.svg";
+import culturalHeritage from "../../../../img/icon/culturalHeritage.svg";
+import religion from "../../../../img/icon/religion.svg";
 
-import queryString from 'query-string';
+import queryString from "query-string";
 
 function HomePanel({ router }) {
+  const platform = useSelector((state) => state.main.platform);
 
   return (
     <>
@@ -30,9 +26,9 @@ function HomePanel({ router }) {
         separator={false}
         left={
           <PanelHeaderButton
-            //{params.vk_platform === "desktop_web" ?
-            //  label="Поиск"
-            //: undefined}
+            label={
+              platform === VKCOM && <div style={{ marginLeft: 6 }}>Поиск</div>
+            }
           >
             <Icon28SearchOutline />
           </PanelHeaderButton>
@@ -44,7 +40,11 @@ function HomePanel({ router }) {
         <div className="informationBlock">
           <div className="backgroundInformationBlock">
             <div className="backgroundIconWeather">
-              <Icon28CloudOutline width={35} height={35} className="iconWeather" />
+              <Icon28CloudOutline
+                width={35}
+                height={35}
+                className="iconWeather"
+              />
             </div>
             <div className="blockInfo">
               <div className="titleInfo">20°</div>
@@ -56,7 +56,11 @@ function HomePanel({ router }) {
           </div>
           <div className="backgroundInformationBlock">
             <div className="backgroundIconDate">
-              <Icon28CalendarOutline width={35} height={35} className="iconDate" />
+              <Icon28CalendarOutline
+                width={35}
+                height={35}
+                className="iconDate"
+              />
             </div>
             <div className="blockInfo">
               <div className="titleInfo">5 июня</div>
@@ -67,52 +71,68 @@ function HomePanel({ router }) {
           </div>
         </div>
         <div className="blockCards">
-          <div className="card">
+          <div className="card" onClick={() => router.toPanel("cardCategory")}>
             <div className="blockCard">
-              <div><img src={restaurant} className="iconCard" /></div>
+              <div>
+                <img src={restaurant} className="iconCard" />
+              </div>
               <div className="titleCard">Рестораны</div>
             </div>
           </div>
           <div className="card2">
             <div className="blockCard">
-              <div><img src={culturalHeritage} className="iconCard2" /></div>
+              <div>
+                <img src={culturalHeritage} className="iconCard2" />
+              </div>
               <div className="titleCard2">Объекты культурного наследия</div>
             </div>
           </div>
           <div className="card3">
             <div className="blockCard">
-              <div><img src={religion} className="iconCard3" /></div>
+              <div>
+                <img src={religion} className="iconCard3" />
+              </div>
               <div className="titleCard3">Религиозные организации</div>
             </div>
           </div>
           <div className="card4">
             <div className="blockCard">
-              <div><img src={religion} className="iconCard4" /></div>
+              <div>
+                <img src={religion} className="iconCard4" />
+              </div>
               <div className="titleCard4">Выстовочные залы</div>
             </div>
           </div>
 
           <div className="card">
             <div className="blockCard">
-              <div><img src={restaurant} className="iconCard" /></div>
+              <div>
+                <img src={restaurant} className="iconCard" />
+              </div>
               <div className="titleCard">Музеи</div>
             </div>
           </div>
           <div className="card2">
             <div className="blockCard">
-              <div><img src={culturalHeritage} className="iconCard2" /></div>
+              <div>
+                <img src={culturalHeritage} className="iconCard2" />
+              </div>
               <div className="titleCard2">Театры</div>
             </div>
           </div>
           <div className="card3">
             <div className="blockCard">
-              <div><img src={religion} className="iconCard3" /></div>
+              <div>
+                <img src={religion} className="iconCard3" />
+              </div>
               <div className="titleCard3">Религиозные организации</div>
             </div>
           </div>
           <div className="card4">
             <div className="blockCard">
-              <div><img src={religion} className="iconCard4" /></div>
+              <div>
+                <img src={religion} className="iconCard4" />
+              </div>
               <div className="titleCard4">Выстовочные залы</div>
             </div>
           </div>

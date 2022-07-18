@@ -17,6 +17,7 @@ import {
   Link,
   Div,
   Tappable,
+  VKCOM,
 } from "@vkontakte/vkui";
 
 import {
@@ -38,6 +39,7 @@ let isInfoUser = false
 
 function ProfilePanelBase({ router }) {
   const mainStorage = useSelector((state) => state.main)
+  const platform = useSelector((state) => state.main.platform)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -63,9 +65,7 @@ function ProfilePanelBase({ router }) {
         separator={false}
         left={
           <PanelHeaderButton
-            //{params.vk_platform === "desktop_web" ?
-            //  label="Поиск"
-            //: undefined}
+            label={platform === VKCOM && <div style={{marginLeft: 6}}>Настройки</div>}
           >
             <Icon28SettingsOutline />
           </PanelHeaderButton>

@@ -1,0 +1,128 @@
+:root {
+  --border_card_size: 0.5px;
+}
+
+body[scheme="vkcom_light"] {
+  --border_card: #d3d9de !important;
+}
+
+body[scheme="vkcom_dark"] {
+  --border_card: #555555 !important;
+}
+
+body[scheme="bright_light"] {
+  --border_card: #d3d9de !important;
+}
+
+body[scheme="space_gray"] {
+  --border_card: #555555 !important;
+}
+
+.blockImgCategory {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 52px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0, 0, 0, 0.0) 100%);
+}
+
+.imgCategory {
+  width: 100%;
+  height: 200px;
+  margin-top: -52px;
+  object-fit: cover;
+}
+
+.blockContent {
+  background-color: var(--background_content_block);
+  border-radius: 16px !important;
+  padding: 8px 0px 24px 0px;
+  margin-top: -20px;
+}
+
+.separatorSearch {
+  margin-top: 12px;
+  margin-left: -24px;
+  margin-right: -24px;
+}
+
+.iconHeader {
+  color: #FFF !important;
+}
+
+.textHeader {
+  color: #FFF;
+}
+
+@media (min-width: 550px) {
+  .allCategoryCards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 16px;
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+  }
+}
+
+@media (max-width: 500px) {
+  .allCategoryCards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 16px;
+    grid-row-gap: 16px;
+  }
+}
+
+@media (min-width: 550px) {
+  .cardBlock {
+    border-radius: 16px;
+    border: var(--border_card_size) var(--border_card) solid;
+    width: calc(100%/2 - 10px);
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 500px) {
+  .cardBlock {
+    border-radius: 16px;
+    border: var(--border_card_size) var(--border_card) solid;
+    width: 100%;
+    overflow: hidden;
+  }
+}
+
+.imgCard {
+  width: 100%;
+  height: 200px;
+}
+
+.iconMoreCard {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: rgba(35, 35, 35, 0.7);
+  color: #FFF;
+  border-radius: 16px;
+}
+
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  grid-row-gap: 6px;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.category {
+  color: var(--im_bubble_gift_text_secondary);
+}
+
+.address {
+  color: var(--text_secondary);
+}
