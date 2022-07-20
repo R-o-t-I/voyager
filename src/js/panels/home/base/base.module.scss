@@ -1,19 +1,3 @@
-body[scheme="vkcom_light"] {
-  --backgroundInformationBlock: #ffffff;
-}
-
-body[scheme="vkcom_dark"] {
-  --backgroundInformationBlock: #303030;
-}
-
-body[scheme="bright_light"] {
-  --backgroundInformationBlock: #ffffff;
-}
-
-body[scheme="space_gray"] {
-  --backgroundInformationBlock: #303030;
-}
-
 .informationBlock {
   display: flex;
   margin: 16px;
@@ -27,7 +11,8 @@ body[scheme="space_gray"] {
   width: 100%;
   border-radius: 16px;
   background-color: var(--backgroundInformationBlock);
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.03);
+  box-shadow: 5px 5px 5px var(--shadow_content_block);
+  cursor: pointer;
 }
 
 .backgroundIconWeather {
@@ -112,6 +97,7 @@ body[scheme="space_gray"] {
   justify-content: center;
   align-items: center;
   align-content: center;
+  cursor: pointer;
 }
 
 .blockCard {
@@ -148,6 +134,7 @@ body[scheme="space_gray"] {
   justify-content: center;
   align-items: center;
   align-content: center;
+  cursor: pointer;
 }
 
 .iconCard2 {
@@ -177,6 +164,7 @@ body[scheme="space_gray"] {
   justify-content: center;
   align-items: center;
   align-content: center;
+  cursor: pointer;
 }
 
 .iconCard3 {
@@ -204,6 +192,7 @@ body[scheme="space_gray"] {
   justify-content: center;
   align-items: center;
   align-content: center;
+  cursor: pointer;
 }
 
 .iconCard4 {

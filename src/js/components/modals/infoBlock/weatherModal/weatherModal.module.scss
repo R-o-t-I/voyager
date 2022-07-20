@@ -1,0 +1,77 @@
+.blockInfo {
+  position: relative;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.infoWeather {
+  z-index: 1;
+  background: #00000090;
+  padding: 12px 36px;
+  border-radius: 16px;
+}
+
+.titleInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  font-size: 40px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.blockDescInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  grid-row-gap: 0px;
+  margin-top: 12px;
+}
+
+.descInfo {
+  color: #ffffffc0;
+}
+
+.listInfo {
+  display: flex;
+  flex-direction: column;
+  grid-row-gap: 12px;
+  padding: 12px 16px;
+}
+
+.blockCellInfo {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  color: var(--accent);
+}
+
+.infoCellDesc {
+  margin-left: 6px;
+}
+
+.infoDesc {
+  color: var(--text_secondary);
+}
+
+.infoIndicator {
+  font-weight: 500;
+}

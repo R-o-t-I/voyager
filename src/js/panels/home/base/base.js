@@ -29,6 +29,7 @@ function HomePanel({ router }) {
             label={
               platform === VKCOM && <div style={{ marginLeft: 6 }}>Поиск</div>
             }
+            onClick={() => router.toPanel("search")}
           >
             <Icon28SearchOutline />
           </PanelHeaderButton>
@@ -38,7 +39,10 @@ function HomePanel({ router }) {
       </PanelHeader>
       <Group>
         <div className={style.informationBlock}>
-          <div className={style.backgroundInformationBlock}>
+          <div
+            className={style.backgroundInformationBlock}
+            onClick={() => router.toModal("weatherModal")}
+          >
             <div className={style.backgroundIconWeather}>
               <Icon28CloudOutline
                 width={35}
@@ -54,7 +58,10 @@ function HomePanel({ router }) {
               </div>
             </div>
           </div>
-          <div className={style.backgroundInformationBlock}>
+          <div
+            className={style.backgroundInformationBlock}
+            onClick={() => router.toModal("dateModal")}
+          >
             <div className={style.backgroundIconDate}>
               <Icon28CalendarOutline
                 width={35}

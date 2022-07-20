@@ -19,7 +19,7 @@ function MapPanel({ router }) {
             label={
               platform === VKCOM && <div style={{ marginLeft: 6 }}>Фильтры</div>
             }
-            onClick={() => router.toModal("mapFilterModal")}
+            onClick={() => router.toModal("filterMapModal")}
           >
             <Icon28SlidersOutline />
           </PanelHeaderButton>

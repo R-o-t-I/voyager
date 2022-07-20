@@ -1,20 +1,18 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
-import { withRouter } from '@reyzitwo/react-router-vkminiapps';
+import { withRouter } from "@reyzitwo/react-router-vkminiapps";
 import {
-  ModalPage, 
-  ModalPageHeader, 
+  ModalPage,
+  ModalPageHeader,
   PanelHeaderButton,
   IOS,
-  ANDROID
+  ANDROID,
 } from "@vkontakte/vkui";
 
-import {
-  Icon24DismissDark
-} from '@vkontakte/icons'
+import { Icon24DismissDark } from "@vkontakte/icons";
 
-function MapFilterModal({ nav, router }) {
-  const platform = useSelector((state) => state.main.platform)
+function FilterMapModal({ nav, router }) {
+  const platform = useSelector((state) => state.main.platform);
 
   return (
     <ModalPage
@@ -23,14 +21,14 @@ function MapFilterModal({ nav, router }) {
         <ModalPageHeader
           right={
             <Fragment>
-              {(platform === ANDROID) && (
+              {platform === ANDROID && (
                 <PanelHeaderButton onClick={() => router.toBack()}>
                   <Icon24DismissDark />
                 </PanelHeaderButton>
               )}
               {platform === IOS && (
                 <PanelHeaderButton onClick={() => router.toBack()}>
-                  <Icon24DismissDark/>
+                  <Icon24DismissDark />
                 </PanelHeaderButton>
               )}
             </Fragment>
@@ -41,10 +39,8 @@ function MapFilterModal({ nav, router }) {
       }
       onClose={() => router.toBack()}
       settlingHeight={100}
-    >
-      
-    </ModalPage>
+    ></ModalPage>
   );
 }
 
-export default withRouter(MapFilterModal);
+export default withRouter(FilterMapModal);

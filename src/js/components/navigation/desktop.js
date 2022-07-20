@@ -10,6 +10,7 @@ import {
   Group,
   Cell,
   List,
+  Header,
 } from "@vkontakte/vkui";
 import ThemeControllers from "./themeControllers";
 import {
@@ -62,7 +63,12 @@ function DesktopNavigation({ router }) {
           </List>
         </Group>
 
-        <ThemeControllers />
+        <Group>
+          <List className={style.menuDesktop}>
+            <Header mode="secondary">Dev кнопки</Header>
+            <ThemeControllers />
+          </List>
+        </Group>
       </Panel>
     </SplitCol>
   );

@@ -1,0 +1,91 @@
+.vkuiAvatar__overlay--light {
+  background-color: #FF0000 !important;
+}
+
+.calendarSize {
+  width: 100% !important;
+}
+
+.topBlock {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.todaysDate {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.event {
+  border: var(--border_size_05) var(--input_border) solid;
+  border-radius: 16px;
+  padding: 6px 12px;
+  margin-top: 12px;
+  text-align: center;
+  color: var(--text_secondary);
+  box-shadow: 5px 5px 5px var(--shadow_content_block);
+}
+
+.bottomBlock {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.plansTodays {
+  position: relative;
+  margin-top: 12px;
+}
+
+.plansTodaysTitle {
+  position: absolute;
+  top: -10px;
+  font-weight: 500;
+  font-size: 15px;
+  margin-left: 6px;
+  background: var(--background_content);
+  z-index: 2;
+  padding: 0px 6px;
+}
+
+.plansTodaysBlock {
+  border: var(--border_size_05) var(--input_border) solid;
+  box-shadow: 5px 5px 5px var(--shadow_content_block);
+  border-radius: 16px;
+  padding: 6px 12px;
+  z-index: 1;
+}
+
+.plansTodaysContent {
+  margin-top: 6px;
+}
+
+.immediatePlans {
+  position: relative;
+  margin-top: 36px;
+}
+
+.immediatePlansTitle {
+  position: absolute;
+  top: -10px;
+  font-weight: 500;
+  font-size: 15px;
+  margin-left: 6px;
+  background: var(--background_content);
+  z-index: 2;
+  padding: 0px 6px;
+}
+
+.immediatePlansBlock {
+  border: var(--border_size_05) var(--input_border) solid;
+  box-shadow: 5px 5px 5px var(--shadow_content_block);
+  border-radius: 16px;
+  padding: 6px 12px;
+  z-index: 1;
+}
+
+.immediatePlansContent {
+  margin-top: 6px;
+}

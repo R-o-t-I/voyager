@@ -27,15 +27,19 @@ import DesktopNavigation from "./js/components/navigation/desktop";
 import MobailNavigation from "./js/components/navigation/mobail";
 
 /* Модальные страницы */
-import FilterCategoryModal from "./js/components/modals/filterCategory/FilterCategoryModal";
+import FilterCategoryModal from "./js/components/modals/filter/filterCategory/FilterCategoryModal";
+import FilterMapModal from "./js/components/modals/filter/filterMap/FilterMapModal";
+import FilterSearchModal from "./js/components/modals/filter/filterSearch/filterSearch";
 
-import MapFilterModal from "./js/components/modals/MapFilterModal";
+import WeatherModal from "./js/components/modals/infoBlock/weatherModal/WeatherModal";
+import DateModal from "./js/components/modals/infoBlock/dateModal/DateModal";
 
 /* Панели */
 const HomePanel = lazy(() => import("./js/panels/home/base/base"));
 const CardCategoryPanel = lazy(() =>
   import("./js/panels/home/cardCategory/cardCategory")
 );
+const SearchPanel = lazy(() => import("./js/panels/home/search/search"));
 
 const MapPanel = lazy(() => import("./js/panels/map/base/base"));
 
@@ -71,8 +75,11 @@ const App = withAdaptivity(
 
     const modals = (
       <ModalRoot activeModal={router.modal} onClose={() => router.toBack()}>
-        <MapFilterModal nav="mapFilterModal" />
+        <FilterMapModal nav="filterMapModal" />
         <FilterCategoryModal nav="filterCategoryModal" />
+        <FilterSearchModal nav="filterSearchModal" />
+        <WeatherModal nav="weatherModal" />
+        <DateModal nav="dateModal" />
       </ModalRoot>
     );
 
@@ -116,6 +123,11 @@ const App = withAdaptivity(
                   <Panel id="cardCategory">
                     <Suspense fallback={<ScreenSpinner />}>
                       <CardCategoryPanel />
+                    </Suspense>
+                  </Panel>
+                  <Panel id="search">
+                    <Suspense fallback={<ScreenSpinner />}>
+                      <SearchPanel />
                     </Suspense>
                   </Panel>
                 </View>

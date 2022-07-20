@@ -6,26 +6,39 @@
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently not supported by any browser */
+  --border_size_05: 0.5px;
 }
 
 body[scheme="vkcom_light"] {
   --background_panel: #f4f8fc !important;
   --background_content_block: #FFFFFF !important;
+  --backgroundInformationBlock: #ffffff;
+  --border_card: #d3d9de !important;
+  --shadow_content_block: rgba(0, 0, 0, 0.03);
 }
 
 body[scheme="vkcom_dark"] {
   --background_panel: #141414 !important;
   --background_content_block: #303030 !important;
+  --backgroundInformationBlock: #303030;
+  --border_card: #555555 !important;
+  --shadow_content_block: rgba(0, 0, 0, 0.03);
 }
 
 body[scheme="bright_light"] {
   --background_panel: #f4f8fc !important;
   --background_content_block: #FFFFFF !important;
+  --backgroundInformationBlock: #ffffff;
+  --border_card: #d3d9de !important;
+  --shadow_content_block: rgba(0, 0, 0, 0.03);
 }
 
 body[scheme="space_gray"] {
   --background_panel: #141414 !important;
   --background_content_block: #303030 !important;
+  --backgroundInformationBlock: #303030;
+  --border_card: #555555 !important;
+  --shadow_content_block: rgba(0, 0, 0, 0.03);
 }
 
 ::-webkit-scrollbar {
@@ -61,6 +74,14 @@ body[scheme="space_gray"] {
   background: #ffffff00;
 }
 
+.vkuiAvatar__overlay--light {
+  background-color: #ffffff00 !important;
+}
+
+.vkuiDropdown--vkcom {
+  overflow: hidden;
+}
+
 .tabbarStyle {
   border-radius: 16px 16px 0px 0px;
   overflow: hidden;
@@ -80,4 +101,8 @@ body[scheme="space_gray"] {
   background: var(--background_content_block);
   border-radius: 16px;
   padding: 8px;
+}
+
+.vkuiIconButton {
+  border-radius: 16px !important;
 }
