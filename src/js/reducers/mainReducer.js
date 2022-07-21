@@ -27,9 +27,21 @@ export const mainReducer = createSlice({
         visibility: 'Загрузка',
         wind_speed: 'Загрузка',
         wind_deg: 'Загрузка',
-        weather: []
+        weather: [
+          {
+            id: 0,
+            main: "",
+            description: "",
+            icon: ""
+          }
+        ]
       },
-      minutely: []
+      minutely: [
+        {
+          dt: 0,
+          precipitation: 0
+        }
+      ]
     }
   },
   reducers: {
