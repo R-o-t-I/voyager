@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { withRouter } from "@reyzitwo/react-router-vkminiapps";
+import React, {Fragment, useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {withRouter} from "@reyzitwo/react-router-vkminiapps";
 
 import style from "./weather.module.scss";
 
@@ -13,7 +13,7 @@ import {
   VKCOM,
 } from "@vkontakte/vkui";
 
-import { Dropdown } from "@vkontakte/vkui/dist/unstable";
+import {Dropdown} from "@vkontakte/vkui/dist/unstable";
 
 import {
   Icon16ArrowshapeRightOutline,
@@ -28,11 +28,11 @@ import {
 } from "@vkontakte/icons";
 
 import queryString from "query-string";
-import { set } from "../../../reducers/mainReducer";
+import {set} from "../../../reducers/mainReducer";
 
 const axios = require("axios");
 
-function WeatherPanel({ router }) {
+function WeatherPanel({router}) {
   const platform = useSelector((state) => state.main.platform);
   const mainStorage = useSelector((state) => state.main);
   const [result, setResult] = useState(false);
@@ -46,16 +46,16 @@ function WeatherPanel({ router }) {
   }, {});
 
   async function getWeather() {
-    const { data } = await axios.get("weather.get");
+    const {data} = await axios.get("weather.get");
 
-    dispatch(set({ key: "weather", value: data.info.weather }));
+    dispatch(set({key: "weather", value: data.info.weather}));
   }
 
   function timeConverter(UNIX_timestamp) {
-    var a = new Date(UNIX_timestamp * 1000);
-    var hour = a.getHours();
-    var min = a.getMinutes();
-    var time = hour + ":" + min;
+    let a = new Date(UNIX_timestamp * 1000),
+      hour = a.getHours(),
+      min = a.getMinutes(),
+      time = hour + ":" + min;
     return time;
   }
 
@@ -128,16 +128,15 @@ function WeatherPanel({ router }) {
         <div>
           {mainStorage.weather.hourly.map((item, index) => (
             <div>
-              <div>{timeConverter(Number(item.a))}</div>
+              <div>{timeConverter(Number(item.dt))}</div>
               <div>{item.temp}</div>
-              {console.log(item.a)}
             </div>
           ))}
         </div>
         <div></div>
         <div className={style.listInfo}>
           <div className={style.blockCellInfo}>
-            <Icon16DropOutline width={28} height={28} className={style.icon} />
+            <Icon16DropOutline width={28} height={28} className={style.icon}/>
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>влажность</div>
               <div className={style.infoIndicator}>
@@ -146,7 +145,7 @@ function WeatherPanel({ router }) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon28SpeedometerMiddleOutline className={style.icon} />
+            <Icon28SpeedometerMiddleOutline className={style.icon}/>
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>давление</div>
               <div className={style.infoIndicator}>
@@ -156,7 +155,7 @@ function WeatherPanel({ router }) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon16Wind width={28} height={28} className={style.icon} />
+            <Icon16Wind width={28} height={28} className={style.icon}/>
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>скорость ветра</div>
               <div className={style.infoIndicator}>
@@ -178,7 +177,7 @@ function WeatherPanel({ router }) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon16ViewOutline width={28} height={28} className={style.icon} />
+            <Icon16ViewOutline width={28} height={28} className={style.icon}/>
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>видимость</div>
               <div className={style.infoIndicator}>
@@ -187,7 +186,7 @@ function WeatherPanel({ router }) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon28SunOutline width={28} height={28} className={style.icon} />
+            <Icon28SunOutline width={28} height={28} className={style.icon}/>
             <div className={style.infoCellDesc}>
               <div className={style.titleBlock}>
                 <div className={style.infoDesc}>УФ-индекс</div>
@@ -202,7 +201,7 @@ function WeatherPanel({ router }) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon28CloudOutline width={28} height={28} className={style.icon} />
+            <Icon28CloudOutline width={28} height={28} className={style.icon}/>
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>облачность</div>
               <div className={style.infoIndicator}>
@@ -212,7 +211,7 @@ function WeatherPanel({ router }) {
           </div>
           <div className={style.blockCellInfo}>
             <Icon16Fog
-              style={{ transform: "rotate(90deg)" }}
+              style={{transform: "rotate(90deg)"}}
               width={28}
               height={28}
               className={style.icon}
