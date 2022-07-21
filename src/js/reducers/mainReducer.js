@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 export const mainReducer = createSlice({
   name: "main",
@@ -7,7 +7,30 @@ export const mainReducer = createSlice({
     isDesktop: false,
     theme: "light",
     hasHeader: false,
-    infoUser: { name: "Загрузка..." },
+    infoUser: {name: "Загрузка..."},
+    weather: {
+      lat: 'Загрузка',
+      lon: 'Загрузка',
+      timezone: "Europe/Moscow",
+      timezone_offset: 'Загрузка',
+      current: {
+        dt: 'Загрузка',
+        sunrise: 'Загрузка',
+        sunset: 'Загрузка',
+        temp: 'Загрузка',
+        feels_like: 'Загрузка',
+        pressure: 'Загрузка',
+        humidity: 'Загрузка',
+        dew_point: 'Загрузка',
+        uvi: 'Загрузка',
+        clouds: 'Загрузка',
+        visibility: 'Загрузка',
+        wind_speed: 'Загрузка',
+        wind_deg: 'Загрузка',
+        weather: []
+      },
+      minutely: []
+    }
   },
   reducers: {
     set: (state, action) => {
@@ -16,5 +39,5 @@ export const mainReducer = createSlice({
   },
 });
 
-export const { set } = mainReducer.actions;
+export const {set} = mainReducer.actions;
 export default mainReducer.reducer;

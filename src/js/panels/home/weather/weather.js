@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { withRouter } from "@reyzitwo/react-router-vkminiapps";
 
 import style from "./weather.module.scss";
@@ -28,32 +28,36 @@ import {
 } from "@vkontakte/icons";
 
 import queryString from "query-string";
+import {set} from "../../../reducers/mainReducer";
 
 const axios = require("axios");
 
 function WeatherPanel({ router }) {
   const platform = useSelector((state) => state.main.platform);
+  const mainStorage = useSelector((state) => state.main);
   const [current, setCurrent] = useState({});
   const [currentWeather, setCurrentWeather] = useState({});
   const [result, setResult] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!result) {
       getWeather();
       setResult(true);
     }
-  });
+  }, {});
 
   async function getWeather() {
     const { data } = await axios.get("init");
 
     setCurrent(data.info.weather.current);
     setCurrentWeather(data.info.weather.current.weather[0]);
-    console.log(data.info.weather.current);
+    dispatch(set({ key: "weather", value: data.info.weather }));
   }
 
   return (
     <>
+      {console.log(123 + ' ' + JSON.stringify(mainStorage))}
       <PanelHeader
         separator={false}
         left={
@@ -64,7 +68,7 @@ function WeatherPanel({ router }) {
           />
         }
       >
-        Погода в Питере
+        Погода в Питере {mainStorage.weather.description}
       </PanelHeader>
       <Group>
         <div className={style.blockInfo}>
@@ -72,7 +76,7 @@ function WeatherPanel({ router }) {
             <div className={style.temp}>
               <div className={style.headerTemp}>сейчас</div>
               <div className={style.tempTitle}>
-                {Number(current.temp).toFixed(1)}℃
+                {Number(mainStorage.weather.current.temp).toFixed(1)}℃
               </div>
               <div className={style.blockDescInfo}>
                 <div className={style.imgDescBackground}>
