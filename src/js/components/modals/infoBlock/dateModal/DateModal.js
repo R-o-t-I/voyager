@@ -123,7 +123,7 @@ function DateModal({ nav, router }) {
                 after={""}
                 description="23 июля 2022 года в 16:00"
               >
-                Посещение ресторана "Васельки"
+                Посещение ресторана "Васильки"
               </SimpleCell>
             </div>
           </div>

@@ -35,7 +35,7 @@
   color: #FFF;
 }
 
-@media (min-width: 550px) {
+@media (min-width: 500px) {
   .allCategoryCards {
     display: flex;
     flex-direction: row;
@@ -57,7 +57,7 @@
   }
 }
 
-@media (min-width: 550px) {
+@media (min-width: 500px) {
   .cardBlock {
     border-radius: 16px;
     border: var(--border_size_05) var(--border_card) solid;

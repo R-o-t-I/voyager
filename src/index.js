@@ -16,6 +16,11 @@ import "./css/main.css";
 import { AdaptivityProvider } from "@vkontakte/vkui";
 import bridge from "@vkontakte/vk-bridge";
 
+const axios = require("axios");
+
+axios.defaults.baseURL = "https://traveler-api.evgrg.xyz/";
+axios.defaults.headers.common["xvk"] = window.location.search.replace("?", "");
+
 bridge.send("VKWebAppInit", {});
 
 ReactDOM.render(

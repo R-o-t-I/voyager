@@ -41,7 +41,7 @@ function HomePanel({ router }) {
         <div className={style.informationBlock}>
           <div
             className={style.backgroundInformationBlock}
-            onClick={() => router.toModal("weatherModal")}
+            onClick={() => router.toPanel("weather")}
           >
             <div className={style.backgroundIconWeather}>
               <Icon28CloudOutline
