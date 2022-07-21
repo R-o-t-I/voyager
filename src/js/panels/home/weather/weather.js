@@ -51,6 +51,16 @@ function WeatherPanel({ router }) {
     dispatch(set({ key: "weather", value: data.info.weather }));
   }
 
+  function timeConverter(UNIX_timestamp) {
+    var a = new Date(UNIX_timestamp * 1000);
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var time = hour + ":" + min;
+    return time;
+  }
+
+  console.log(timeConverter(0));
+
   return (
     <>
       {console.log(123 + " " + JSON.stringify(mainStorage))}
@@ -115,6 +125,16 @@ function WeatherPanel({ router }) {
             </div>
           </div>
         </div>
+        <div>
+          {mainStorage.weather.hourly.map((item, index) => (
+            <div>
+              <div>{timeConverter(Number(item.a))}</div>
+              <div>{item.temp}</div>
+              {console.log(item.a)}
+            </div>
+          ))}
+        </div>
+        <div></div>
         <div className={style.listInfo}>
           <div className={style.blockCellInfo}>
             <Icon16DropOutline width={28} height={28} className={style.icon} />
