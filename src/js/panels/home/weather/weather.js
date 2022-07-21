@@ -1,19 +1,21 @@
-import React, {Fragment, useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {withRouter} from "@reyzitwo/react-router-vkminiapps";
+import React, { Fragment, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { withRouter } from "@reyzitwo/react-router-vkminiapps";
 
 import style from "./weather.module.scss";
 
 import {
   Div,
   Group,
+  Header,
+  HorizontalScroll,
   PanelHeader,
   PanelHeaderBack,
   Text,
   VKCOM,
 } from "@vkontakte/vkui";
 
-import {Dropdown} from "@vkontakte/vkui/dist/unstable";
+import { Dropdown } from "@vkontakte/vkui/dist/unstable";
 
 import {
   Icon16ArrowshapeRightOutline,
@@ -28,11 +30,11 @@ import {
 } from "@vkontakte/icons";
 
 import queryString from "query-string";
-import {set} from "../../../reducers/mainReducer";
+import { set } from "../../../reducers/mainReducer";
 
 const axios = require("axios");
 
-function WeatherPanel({router}) {
+function WeatherPanel({ router }) {
   const platform = useSelector((state) => state.main.platform);
   const mainStorage = useSelector((state) => state.main);
   const [result, setResult] = useState(false);
@@ -46,12 +48,12 @@ function WeatherPanel({router}) {
   }, {});
 
   async function getWeather() {
-    const {data} = await axios.get("weather.get");
+    const { data } = await axios.get("weather.get");
 
-    dispatch(set({key: "weather", value: data.info.weather}));
+    dispatch(set({ key: "weather", value: data.info.weather }));
   }
 
-  function timeConverter(UNIX_timestamp) {
+  function timeConverterHourly(UNIX_timestamp) {
     let a = new Date(UNIX_timestamp * 1000),
       hour = a.getHours(),
       min = a.getMinutes(),
@@ -59,7 +61,49 @@ function WeatherPanel({router}) {
     return time;
   }
 
-  console.log(timeConverter(0));
+  function timeConverterDaily(UNIX_timestamp) {
+    let a = new Date(UNIX_timestamp * 1000),
+      months = [
+        "января",
+        "февраля",
+        "марта",
+        "апреля",
+        "мая",
+        "июня",
+        "июля",
+        "августа",
+        "сентября",
+        "октября",
+        "ноября",
+        "декабря",
+      ],
+      month = months[a.getMonth()],
+      date = a.getDate(),
+      hour = a.getHours(),
+      min = a.getMinutes(),
+      sec = a.getSeconds(),
+      time = date + " " + month;
+    return time;
+  }
+
+  function getWeekDay(unix) {
+    let date = new Date(unix),
+      days = [
+        "понедельник",
+        "вторник",
+        "среда",
+        "четверг",
+        "пятница",
+        "суббота",
+        "воскресенье",
+      ],
+      day = days[date.getDate()],
+      myDay = day;
+
+    return myDay;
+  }
+
+  console.log(getWeekDay(0));
 
   return (
     <>
@@ -82,7 +126,7 @@ function WeatherPanel({router}) {
             <div className={style.temp}>
               <div className={style.headerTemp}>сейчас</div>
               <div className={style.tempTitle}>
-                {mainStorage.weather.current.temp}℃
+                {(mainStorage.weather.current.temp * 1).toFixed(1)}℃
               </div>
               <div className={style.blockDescInfo}>
                 <div className={style.imgDescBackground}>
@@ -96,7 +140,8 @@ function WeatherPanel({router}) {
                     {mainStorage.weather.current.weather[0].description}
                   </div>
                   <div className={style.descTemp}>
-                    ощущается как {mainStorage.weather.current.feels_like}℃
+                    ощущается как{" "}
+                    {(mainStorage.weather.current.feels_like * 1).toFixed(1)}℃
                   </div>
                 </div>
               </div>
@@ -125,18 +170,39 @@ function WeatherPanel({router}) {
             </div>
           </div>
         </div>
-        <div>
-          {mainStorage.weather.hourly.map((item, index) => (
-            <div>
-              <div>{timeConverter(Number(item.dt))}</div>
-              <div>{item.temp}</div>
+        <div className={style.weatherHourlyBlock}>
+          <HorizontalScroll
+            showArrows
+            getScrollToLeft={(i) => i - 120}
+            getScrollToRight={(i) => i + 120}
+          >
+            <div className={style.weatherHourlyItems}>
+              {mainStorage.weather.hourly.map((item, index) => (
+                <div className={style.weatherHourlyItem}>
+                  <div className={style.titleHourly}>
+                    {timeConverterHourly(Number(item.dt))}
+                  </div>
+                  <div>
+                    <img
+                      className={style.imgHourly}
+                      src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`}
+                    />
+                  </div>
+                  <div className={style.descHourly}>
+                    {item.weather[0].description}
+                  </div>
+                  <div className={style.tempHourly}>
+                    {(item.temp * 1).toFixed(1)}℃
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </HorizontalScroll>
         </div>
         <div></div>
         <div className={style.listInfo}>
           <div className={style.blockCellInfo}>
-            <Icon16DropOutline width={28} height={28} className={style.icon}/>
+            <Icon16DropOutline width={28} height={28} className={style.icon} />
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>влажность</div>
               <div className={style.infoIndicator}>
@@ -145,7 +211,7 @@ function WeatherPanel({router}) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon28SpeedometerMiddleOutline className={style.icon}/>
+            <Icon28SpeedometerMiddleOutline className={style.icon} />
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>давление</div>
               <div className={style.infoIndicator}>
@@ -155,7 +221,7 @@ function WeatherPanel({router}) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon16Wind width={28} height={28} className={style.icon}/>
+            <Icon16Wind width={28} height={28} className={style.icon} />
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>скорость ветра</div>
               <div className={style.infoIndicator}>
@@ -177,7 +243,7 @@ function WeatherPanel({router}) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon16ViewOutline width={28} height={28} className={style.icon}/>
+            <Icon16ViewOutline width={28} height={28} className={style.icon} />
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>видимость</div>
               <div className={style.infoIndicator}>
@@ -186,7 +252,7 @@ function WeatherPanel({router}) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon28SunOutline width={28} height={28} className={style.icon}/>
+            <Icon28SunOutline width={28} height={28} className={style.icon} />
             <div className={style.infoCellDesc}>
               <div className={style.titleBlock}>
                 <div className={style.infoDesc}>УФ-индекс</div>
@@ -201,17 +267,17 @@ function WeatherPanel({router}) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon28CloudOutline width={28} height={28} className={style.icon}/>
+            <Icon28CloudOutline width={28} height={28} className={style.icon} />
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>облачность</div>
               <div className={style.infoIndicator}>
-                {mainStorage.weather.current.clouds}
+                {mainStorage.weather.current.clouds}%
               </div>
             </div>
           </div>
           <div className={style.blockCellInfo}>
             <Icon16Fog
-              style={{transform: "rotate(90deg)"}}
+              style={{ transform: "rotate(90deg)" }}
               width={28}
               height={28}
               className={style.icon}
@@ -230,6 +296,35 @@ function WeatherPanel({router}) {
               </div>
             </div>
           </div>
+        </div>
+        <div className={style.weatherDailyItems}>
+          <Header>Погода на неделю</Header>
+          {mainStorage.weather.daily.map((item, index) => (
+            <div className={style.weatherDailyItem}>
+              <div className={style.infoDay}>
+                <div className={style.day}>{getWeekDay(new Date(item.dt))}</div>
+                <div className={style.date}>
+                  {timeConverterDaily(Number(item.dt))}
+                </div>
+              </div>
+              <div className={style.blockEnd}>
+                <div className={style.blockEndItems}>
+                  <div>
+                    <img
+                      className={style.imgDaily}
+                      src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`}
+                    />
+                  </div>
+                  <div className={style.tempDayDaily}>
+                    {(item.temp.day * 1).toFixed(1)}℃
+                  </div>
+                  <div className={style.tempNightDaily}>
+                    {(item.temp.night * 1).toFixed(1)}℃
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </Group>
     </>

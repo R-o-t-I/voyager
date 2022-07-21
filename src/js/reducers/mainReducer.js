@@ -42,7 +42,61 @@ export const mainReducer = createSlice({
           precipitation: 0,
         },
       ],
-      hourly: [{ dt: 0, temp: "Загрузка" }],
+      hourly: [
+        {
+          dt: 0,
+          temp: "Загрузка",
+          weather: [
+            {
+              id: 0,
+              main: "",
+              description: "",
+              icon: "",
+            },
+          ],
+        },
+      ],
+      daily: [
+        {
+          dt: 0,
+          sunrise: 0,
+          sunset: 0,
+          moonrise: 0,
+          moonset: 0,
+          moon_phase: "Загрузка",
+          temp: {
+            day: "Загрузка",
+            min: "Загрузка",
+            max: "Загрузка",
+            night: "Загрузка",
+            eve: "Загрузка",
+            morn: "Загрузка",
+          },
+          feels_like: {
+            day: "Загрузка",
+            night: "Загрузка",
+            eve: "Загрузка",
+            morn: "Загрузка",
+          },
+          pressure: "Загрузка",
+          humidity: "Загрузка",
+          dew_point: "Загрузка",
+          wind_speed: "Загрузка",
+          wind_deg: "Загрузка",
+          weather: [
+            {
+              id: 0,
+              main: "Загрузка",
+              description: "Загрузка",
+              icon: "",
+            },
+          ],
+          clouds: "Загрузка",
+          pop: "Загрузка",
+          rain: "Загрузка",
+          uvi: "Загрузка",
+        },
+      ],
     },
   },
   reducers: {
