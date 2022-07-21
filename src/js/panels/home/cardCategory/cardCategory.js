@@ -29,6 +29,8 @@ const axios = require("axios");
 
 function CardCategoryPanel({ router }) {
   const platform = useSelector((state) => state.main.platform);
+
+  /*
   const [result, setResult] = useState(false);
   const dispatch = useDispatch();
   const [restaraunt, setRestaraunt] = useState("");
@@ -47,6 +49,7 @@ function CardCategoryPanel({ router }) {
 
     console.log(data.info.restaraunt[0]);
   }
+  */
 
   return (
     <>
