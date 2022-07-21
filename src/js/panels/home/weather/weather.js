@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "@reyzitwo/react-router-vkminiapps";
 
 import style from "./weather.module.scss";
@@ -28,15 +28,13 @@ import {
 } from "@vkontakte/icons";
 
 import queryString from "query-string";
-import {set} from "../../../reducers/mainReducer";
+import { set } from "../../../reducers/mainReducer";
 
 const axios = require("axios");
 
 function WeatherPanel({ router }) {
   const platform = useSelector((state) => state.main.platform);
   const mainStorage = useSelector((state) => state.main);
-  const [current, setCurrent] = useState({});
-  const [currentWeather, setCurrentWeather] = useState({});
   const [result, setResult] = useState(false);
   const dispatch = useDispatch();
 
@@ -48,16 +46,14 @@ function WeatherPanel({ router }) {
   }, {});
 
   async function getWeather() {
-    const { data } = await axios.get("init");
+    const { data } = await axios.get("weather.get");
 
-    setCurrent(data.info.weather.current);
-    setCurrentWeather(data.info.weather.current.weather[0]);
     dispatch(set({ key: "weather", value: data.info.weather }));
   }
 
   return (
     <>
-      {console.log(123 + ' ' + JSON.stringify(mainStorage))}
+      {console.log(123 + " " + JSON.stringify(mainStorage))}
       <PanelHeader
         separator={false}
         left={
@@ -76,21 +72,21 @@ function WeatherPanel({ router }) {
             <div className={style.temp}>
               <div className={style.headerTemp}>сейчас</div>
               <div className={style.tempTitle}>
-                {Number(mainStorage.weather.current.temp).toFixed(1)}℃
+                {mainStorage.weather.current.temp}℃
               </div>
               <div className={style.blockDescInfo}>
                 <div className={style.imgDescBackground}>
                   <img
                     className={style.imgDesc}
-                    src={`http://openweathermap.org/img/w/${currentWeather.icon}.png`}
+                    src={`http://openweathermap.org/img/w/${"mainStorage.weather.current.currentWeather.icon"}.png`}
                   />
                 </div>
                 <div className={style.descBlock}>
                   <div className={style.descTemp}>
-                    {currentWeather.description}
+                    {mainStorage.weather.current.weather[0].description}
                   </div>
                   <div className={style.descTemp}>
-                    ощущается как {Number(current.feels_like).toFixed(1)}℃
+                    ощущается как {mainStorage.weather.current.feels_like}℃
                   </div>
                 </div>
               </div>
@@ -125,7 +121,7 @@ function WeatherPanel({ router }) {
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>влажность</div>
               <div className={style.infoIndicator}>
-                {Number(current.humidity)}%
+                {mainStorage.weather.current.humidity}%
               </div>
             </div>
           </div>
@@ -134,7 +130,8 @@ function WeatherPanel({ router }) {
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>давление</div>
               <div className={style.infoIndicator}>
-                {Number(current.pressure / 1.33).toFixed(1)} мм.рт.ст.
+                {(mainStorage.weather.current.pressure / 1.33).toFixed(1)}{" "}
+                мм.рт.ст.
               </div>
             </div>
           </div>
@@ -143,7 +140,7 @@ function WeatherPanel({ router }) {
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>скорость ветра</div>
               <div className={style.infoIndicator}>
-                {Number(current.wind_speed)} м/с
+                {mainStorage.weather.current.wind_speed} м/с
               </div>
             </div>
           </div>
@@ -156,7 +153,7 @@ function WeatherPanel({ router }) {
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>направление ветра</div>
               <div className={style.infoIndicator}>
-                {Number(current.wind_deg)}°
+                {mainStorage.weather.current.wind_deg}°
               </div>
             </div>
           </div>
@@ -165,7 +162,7 @@ function WeatherPanel({ router }) {
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>видимость</div>
               <div className={style.infoIndicator}>
-                {Number(current.visibility / 1000).toFixed(1)} км
+                {(mainStorage.weather.current.visibility / 1000).toFixed(1)} км
               </div>
             </div>
           </div>
@@ -179,7 +176,9 @@ function WeatherPanel({ router }) {
                   onClick={() => router.toModal("uviModal")}
                 />
               </div>
-              <div className={style.infoIndicator}>{Number(current.uvi)}</div>
+              <div className={style.infoIndicator}>
+                {mainStorage.weather.current.uvi}
+              </div>
             </div>
           </div>
           <div className={style.blockCellInfo}>
@@ -187,7 +186,7 @@ function WeatherPanel({ router }) {
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>облачность</div>
               <div className={style.infoIndicator}>
-                {Number(current.clouds)}
+                {mainStorage.weather.current.clouds}
               </div>
             </div>
           </div>
@@ -208,7 +207,7 @@ function WeatherPanel({ router }) {
                 />
               </div>
               <div className={style.infoIndicator}>
-                {Number(current.dew_point)}
+                {mainStorage.weather.current.dew_point}
               </div>
             </div>
           </div>
