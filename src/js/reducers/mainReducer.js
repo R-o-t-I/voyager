@@ -26,6 +26,7 @@ export const mainReducer = createSlice({
         clouds: "Загрузка",
         visibility: "Загрузка",
         wind_speed: "Загрузка",
+        wind_gust: "Загрузка",
         wind_deg: "Загрузка",
         weather: [
           {
@@ -54,6 +55,7 @@ export const mainReducer = createSlice({
               icon: "",
             },
           ],
+          pop: 0,
         },
       ],
       daily: [

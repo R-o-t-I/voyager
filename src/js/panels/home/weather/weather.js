@@ -1,6 +1,6 @@
-import React, {Fragment, useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {withRouter} from "@reyzitwo/react-router-vkminiapps";
+import React, { Fragment, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { withRouter } from "@reyzitwo/react-router-vkminiapps";
 
 import style from "./weather.module.scss";
 
@@ -15,7 +15,7 @@ import {
   VKCOM,
 } from "@vkontakte/vkui";
 
-import {Dropdown} from "@vkontakte/vkui/dist/unstable";
+import { Dropdown } from "@vkontakte/vkui/dist/unstable";
 
 import {
   Icon16ArrowshapeRightOutline,
@@ -30,11 +30,11 @@ import {
 } from "@vkontakte/icons";
 
 import queryString from "query-string";
-import {set} from "../../../reducers/mainReducer";
+import { set } from "../../../reducers/mainReducer";
 
 const axios = require("axios");
 
-function WeatherPanel({router}) {
+function WeatherPanel({ router }) {
   const platform = useSelector((state) => state.main.platform);
   const mainStorage = useSelector((state) => state.main);
   const [result, setResult] = useState(false);
@@ -48,9 +48,9 @@ function WeatherPanel({router}) {
   }, {});
 
   async function getWeather() {
-    const {data} = await axios.get("weather.get");
+    const { data } = await axios.get("weather.get");
 
-    dispatch(set({key: "weather", value: data.info.weather}));
+    dispatch(set({ key: "weather", value: data.info.weather }));
   }
 
   function timeConverterHourly(UNIX_timestamp) {
@@ -86,15 +86,17 @@ function WeatherPanel({router}) {
   function getWeekDay(unix) {
     let date = new Date(unix * 1000),
       days = [
+        "Воскресенье",
         "Понедельник",
         "Вторник",
         "Среда",
         "Четверг",
         "Пятница",
         "Суббота",
-        "Воскресенье",
       ],
       day = days[date.getDay()];
+
+    console.log(date.getDay());
 
     return day;
   }
@@ -102,24 +104,20 @@ function WeatherPanel({router}) {
   function changeDayFormat(number) {
     let changedNumber;
 
-    if(number >= 1 && number <= 9) {
+    if (number >= 1 && number <= 9) {
       number = String(number);
-      changedNumber = "0" + number
+      changedNumber = "0" + number;
     }
-    if(number >= 1 && number <= 9) {
+    if (number >= 1 && number <= 9) {
       number = String(number);
-      changedNumber = "0" + number
+      changedNumber = "0" + number;
     }
 
     return changedNumber;
   }
 
-
   return (
     <>
-      <div>
-        {getWeekDay(0)}
-      </div>
       <PanelHeader
         separator={false}
         left={
@@ -164,19 +162,27 @@ function WeatherPanel({router}) {
               <div className={style.dailyTempBlocks}>
                 <div className={style.dailyTempItem}>
                   <div className={style.headerTemp}>утро</div>
-                  <div>12℃</div>
+                  <div>
+                    {(mainStorage.weather.daily[0].temp.morn * 1).toFixed(1)}℃
+                  </div>
                 </div>
                 <div className={style.dailyTempItem}>
                   <div className={style.headerTemp}>день</div>
-                  <div>12℃</div>
+                  <div>
+                    {(mainStorage.weather.daily[0].temp.day * 1).toFixed(1)}℃
+                  </div>
                 </div>
                 <div className={style.dailyTempItem}>
                   <div className={style.headerTemp}>вечер</div>
-                  <div>12℃</div>
+                  <div>
+                    {(mainStorage.weather.daily[0].temp.eve * 1).toFixed(1)}℃
+                  </div>
                 </div>
                 <div className={style.dailyTempItem}>
                   <div className={style.headerTemp}>ночь</div>
-                  <div>12℃</div>
+                  <div>
+                    {(mainStorage.weather.daily[0].temp.night * 1).toFixed(1)}℃
+                  </div>
                 </div>
               </div>
             </div>
@@ -214,7 +220,7 @@ function WeatherPanel({router}) {
         <div></div>
         <div className={style.listInfo}>
           <div className={style.blockCellInfo}>
-            <Icon16DropOutline width={28} height={28} className={style.icon}/>
+            <Icon16DropOutline width={28} height={28} className={style.icon} />
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>влажность</div>
               <div className={style.infoIndicator}>
@@ -223,7 +229,7 @@ function WeatherPanel({router}) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon28SpeedometerMiddleOutline className={style.icon}/>
+            <Icon28SpeedometerMiddleOutline className={style.icon} />
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>давление</div>
               <div className={style.infoIndicator}>
@@ -233,7 +239,7 @@ function WeatherPanel({router}) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon16Wind width={28} height={28} className={style.icon}/>
+            <Icon16Wind width={28} height={28} className={style.icon} />
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>скорость ветра</div>
               <div className={style.infoIndicator}>
@@ -255,7 +261,7 @@ function WeatherPanel({router}) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon16ViewOutline width={28} height={28} className={style.icon}/>
+            <Icon16ViewOutline width={28} height={28} className={style.icon} />
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>видимость</div>
               <div className={style.infoIndicator}>
@@ -264,7 +270,7 @@ function WeatherPanel({router}) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon28SunOutline width={28} height={28} className={style.icon}/>
+            <Icon28SunOutline width={28} height={28} className={style.icon} />
             <div className={style.infoCellDesc}>
               <div className={style.titleBlock}>
                 <div className={style.infoDesc}>УФ-индекс</div>
@@ -279,7 +285,7 @@ function WeatherPanel({router}) {
             </div>
           </div>
           <div className={style.blockCellInfo}>
-            <Icon28CloudOutline width={28} height={28} className={style.icon}/>
+            <Icon28CloudOutline width={28} height={28} className={style.icon} />
             <div className={style.infoCellDesc}>
               <div className={style.infoDesc}>облачность</div>
               <div className={style.infoIndicator}>
@@ -289,7 +295,7 @@ function WeatherPanel({router}) {
           </div>
           <div className={style.blockCellInfo}>
             <Icon16Fog
-              style={{transform: "rotate(90deg)"}}
+              style={{ transform: "rotate(90deg)" }}
               width={28}
               height={28}
               className={style.icon}
@@ -315,7 +321,13 @@ function WeatherPanel({router}) {
             <div className={style.weatherDailyItem}>
               <div className={style.infoDay}>
                 <div
-                  className={getWeekDay(item.dt) === "суббота" || getWeekDay(item.dt) === "воскресенье" && `${style.day}`}>{getWeekDay(item.dt)}</div>
+                  className={
+                    (getWeekDay(item.dt) === "Суббота" && `${style.day}`) ||
+                    (getWeekDay(item.dt) === "Воскресенье" && `${style.day}`)
+                  }
+                >
+                  {getWeekDay(item.dt)}
+                </div>
                 <div className={style.date}>
                   {timeConverterDaily(Number(item.dt))}
                 </div>

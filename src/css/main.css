@@ -82,6 +82,18 @@ body[scheme="space_gray"] {
   overflow: hidden;
 }
 
+.vkuiSearch {
+  background: rgba(0, 0, 0, 0) !important;
+}
+
+.vkuiSearch__after {
+  background: var(--background_content_block) !important;
+}
+
+.vkuiSearch__after::before {
+  background: var(--background_content_block);
+}
+
 .tabbarStyle {
   border-radius: 16px 16px 0px 0px;
   overflow: hidden;

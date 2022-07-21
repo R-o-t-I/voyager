@@ -3,9 +3,9 @@ import { withRouter } from "@reyzitwo/react-router-vkminiapps";
 
 import { Tabbar, TabbarItem } from "@vkontakte/vkui";
 import {
-  Icon28EternalFlameOutline,
   Icon28LocationMapOutline,
   Icon28Profile,
+  Icon28SchoolOutline,
 } from "@vkontakte/icons";
 
 function MobailNavigation({ router }) {
@@ -25,7 +25,7 @@ function MobailNavigation({ router }) {
         onClick={() => openView("home")}
         text="Места"
       >
-        <Icon28EternalFlameOutline />
+        <Icon28SchoolOutline />
       </TabbarItem>
 
       <TabbarItem

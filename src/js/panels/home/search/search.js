@@ -19,7 +19,7 @@ function SearchPanel({ router }) {
   return (
     <>
       <PanelHeader
-        separator={true}
+        separator={false}
         left={
           <PanelHeaderBack
             label={platform === VKCOM && <div>Назад</div>}
@@ -30,14 +30,21 @@ function SearchPanel({ router }) {
       >
         Поиск
       </PanelHeader>
-      <Search
-        after
-        icon={
-          <Icon28SlidersOutline
-            onClick={() => router.toModal("filterSearchModal")}
-          />
-        }
-      />
+      <div className={style.backgroundSearch}>
+        <Search
+          className={`
+            ${style.vkuiSearch}
+            ${style.vkuiSearch__after}
+          `}
+          //${style.vkuiSearch__after::before}
+          //${style.vkuiSearch__after-in}
+          icon={
+            <Icon28SlidersOutline
+              onClick={() => router.toModal("filterSearchModal")}
+            />
+          }
+        />
+      </div>
     </>
   );
 }

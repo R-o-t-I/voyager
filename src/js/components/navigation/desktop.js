@@ -14,9 +14,9 @@ import {
 } from "@vkontakte/vkui";
 import ThemeControllers from "./themeControllers";
 import {
-  Icon28EternalFlameOutline,
   Icon28LocationMapOutline,
   Icon28Profile,
+  Icon28SchoolOutline,
 } from "@vkontakte/icons";
 
 function DesktopNavigation({ router }) {
@@ -31,7 +31,7 @@ function DesktopNavigation({ router }) {
             <Cell
               onClick={() => router.toView("home")}
               disabled={router.activeView === "home"}
-              before={<Icon28EternalFlameOutline />}
+              before={<Icon28SchoolOutline />}
               className={
                 router.activeView === "home" ? style.activeViewCell : ""
               }
