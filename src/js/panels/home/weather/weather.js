@@ -78,7 +78,7 @@ function WeatherPanel({ router }) {
                 <div className={style.imgDescBackground}>
                   <img
                     className={style.imgDesc}
-                    src={`http://openweathermap.org/img/w/${"mainStorage.weather.current.currentWeather.icon"}.png`}
+                    src={`http://openweathermap.org/img/w/${mainStorage.weather.current.weather[0].icon}.png`}
                   />
                 </div>
                 <div className={style.descBlock}>
