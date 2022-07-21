@@ -310,7 +310,7 @@ function WeatherPanel({router}) {
           </div>
         </div>
         <div className={style.weatherDailyItems}>
-          <Header>Погода на неделю</Header>
+          <div className={style.headerTemp}>Погода на неделю</div>
           {mainStorage.weather.daily.map((item, index) => (
             <div className={style.weatherDailyItem}>
               <div className={style.infoDay}>
