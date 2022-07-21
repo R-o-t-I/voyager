@@ -17,6 +17,11 @@ const structure = [
         id: "search",
         hash: "/search",
       },
+
+      {
+        id: "weather",
+        hash: "/weather",
+      },
     ],
   },
 

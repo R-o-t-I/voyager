@@ -31,7 +31,8 @@ import FilterCategoryModal from "./js/components/modals/filter/filterCategory/Fi
 import FilterMapModal from "./js/components/modals/filter/filterMap/FilterMapModal";
 import FilterSearchModal from "./js/components/modals/filter/filterSearch/filterSearch";
 
-import WeatherModal from "./js/components/modals/infoBlock/weatherModal/WeatherModal";
+import UVIModal from "./js/components/modals/infoBlock/weatherModal/UVIModal/UVIModal";
+import DewPointModal from "./js/components/modals/infoBlock/weatherModal/dewPointModal/DewPointModal";
 import DateModal from "./js/components/modals/infoBlock/dateModal/DateModal";
 
 /* Панели */
@@ -40,6 +41,7 @@ const CardCategoryPanel = lazy(() =>
   import("./js/panels/home/cardCategory/cardCategory")
 );
 const SearchPanel = lazy(() => import("./js/panels/home/search/search"));
+const WeatherPanel = lazy(() => import("./js/panels/home/weather/weather"));
 
 const MapPanel = lazy(() => import("./js/panels/map/base/base"));
 
@@ -78,7 +80,8 @@ const App = withAdaptivity(
         <FilterMapModal nav="filterMapModal" />
         <FilterCategoryModal nav="filterCategoryModal" />
         <FilterSearchModal nav="filterSearchModal" />
-        <WeatherModal nav="weatherModal" />
+        <UVIModal nav="uviModal" />
+        <DewPointModal nav="dewPointModal" />
         <DateModal nav="dateModal" />
       </ModalRoot>
     );
@@ -119,7 +122,6 @@ const App = withAdaptivity(
                       <HomePanel />
                     </Suspense>
                   </Panel>
-
                   <Panel id="cardCategory">
                     <Suspense fallback={<ScreenSpinner />}>
                       <CardCategoryPanel />
@@ -128,6 +130,11 @@ const App = withAdaptivity(
                   <Panel id="search">
                     <Suspense fallback={<ScreenSpinner />}>
                       <SearchPanel />
+                    </Suspense>
+                  </Panel>
+                  <Panel id="weather">
+                    <Suspense fallback={<ScreenSpinner />}>
+                      <WeatherPanel />
                     </Suspense>
                   </Panel>
                 </View>
