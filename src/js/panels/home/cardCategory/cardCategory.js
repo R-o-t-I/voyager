@@ -30,26 +30,24 @@ const axios = require("axios");
 function CardCategoryPanel({ router }) {
   const platform = useSelector((state) => state.main.platform);
 
-  /*
   const [result, setResult] = useState(false);
   const dispatch = useDispatch();
-  const [restaraunt, setRestaraunt] = useState("");
+  const [restaurant, setRestaurant] = useState("");
 
   useEffect(() => {
     if (!result) {
-      getRestaraunt();
+      getRestaurant();
       setResult(true);
     }
   }, {});
 
-  async function getRestaraunt() {
-    const { data } = await axios.get("restaraunt.get");
+  async function getRestaurant() {
+    const { data } = await axios.get("restaurant.get");
 
-    setRestaraunt(data.info.restaraunt[0]);
+    setRestaurant(data.info.restaurant);
 
-    console.log(data.info.restaraunt[0]);
+    console.log(data.info.restaurant);
   }
-  */
 
   return (
     <>
@@ -96,46 +94,50 @@ function CardCategoryPanel({ router }) {
         >
           Каталог
         </Header>
-        <div className={style.allCategoryCards}>
-          <div className={style.cardBlock}>
-            <div style={{ position: "relative" }}>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Grand_Cascade_of_Peterhof_01.jpg/640px-Grand_Cascade_of_Peterhof_01.jpg"
-                className={style.imgCard}
-              />
-              <Dropdown
-                placement="bottom-end"
-                content={
-                  <List>
-                    <CellButton multiline before={<Icon28FavoriteOutline />}>
-                      Добавить в избранное
-                    </CellButton>
-                    <CellButton multiline before={<Icon28ListLikeOutline />}>
-                      Хочу посетить
-                    </CellButton>
-                    <CellButton multiline before={<Icon28ListCheckOutline />}>
-                      Отметить посещенным
-                    </CellButton>
-                    <CellButton multiline before={<Icon28CalendarOutline />}>
-                      Запланировать посещение
-                    </CellButton>
-                  </List>
-                }
-              >
-                <div className={style.iconMoreCard}>
-                  <IconButton>
-                    <Icon28MoreHorizontal />
-                  </IconButton>
+        {restaurant.map((item, index) => (
+          <div className={style.allCategoryCards}>
+            <div className={style.cardBlock}>
+              <div style={{ position: "relative" }}>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Grand_Cascade_of_Peterhof_01.jpg/640px-Grand_Cascade_of_Peterhof_01.jpg"
+                  className={style.imgCard}
+                />
+                <Dropdown
+                  placement="bottom-end"
+                  content={
+                    <List>
+                      <CellButton multiline before={<Icon28FavoriteOutline />}>
+                        Добавить в избранное
+                      </CellButton>
+                      <CellButton multiline before={<Icon28ListLikeOutline />}>
+                        Хочу посетить
+                      </CellButton>
+                      <CellButton multiline before={<Icon28ListCheckOutline />}>
+                        Отметить посещенным
+                      </CellButton>
+                      <CellButton multiline before={<Icon28CalendarOutline />}>
+                        Запланировать посещение
+                      </CellButton>
+                    </List>
+                  }
+                >
+                  <div className={style.iconMoreCard}>
+                    <IconButton>
+                      <Icon28MoreHorizontal />
+                    </IconButton>
+                  </div>
+                </Dropdown>
+              </div>
+              <div className={style.infoCard}>
+                <div className={style.title}>
+                  Музей "Государственный Эрмитаж"
                 </div>
-              </Dropdown>
-            </div>
-            <div className={style.infoCard}>
-              <div className={style.title}>Музей "Государственный Эрмитаж"</div>
-              <div className={style.category}>Художественные</div>
-              <div className={style.address}>Дворцовая пл., 2</div>
+                <div className={style.category}>Художественные</div>
+                <div className={style.address}>Дворцовая пл., 2</div>
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </>
   );
