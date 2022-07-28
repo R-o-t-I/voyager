@@ -20,6 +20,7 @@ const axios = require("axios");
 
 axios.defaults.baseURL = "https://traveler-api.evgrg.xyz/";
 axios.defaults.headers.common["xvk"] = window.location.search.replace("?", "");
+axios.defaults.headers.common["Authorization"] = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJ2a2lkMDAwMDAwMDAwIiwiZXhwIjoxNjczNzAyNzkyfQ.yHAeZTBMW8t5O2cWGW0rCVuce_Qlm1loQn3grQbN8OE"
 
 bridge.send("VKWebAppInit", {});
 
