@@ -32,7 +32,7 @@ function CardCategoryPanel({ router }) {
 
   const [result, setResult] = useState(false);
   const dispatch = useDispatch();
-  const [restaurant, setRestaurant] = useState("");
+  const [restaurant, setRestaurant] = useState([]);
 
   useEffect(() => {
     if (!result) {
