@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { withRouter } from "@reyzitwo/react-router-vkminiapps";
 import {
@@ -19,8 +19,26 @@ import style from "./dateModal.module.scss";
 
 import { Icon24DismissDark, Icon28MortarOutline } from "@vkontakte/icons";
 
+const axios = require('axios');
+
+const months_list = [
+  "Января",
+  "Февраля",
+  "Марта",
+  "Апреля",
+  "Мая",
+  "Июня",
+  "Июля",
+  "Августа",
+  "Сентября",
+  "Октября",
+  "Ноября",
+  "Декабря"
+];
+
 function DateModal({ nav, router }) {
   const platform = useSelector((state) => state.main.platform);
+  const mainStorage = useSelector((state) => state.main);
   const [value, setValue] = useState(new Date());
   const [enableTime, setEnableTime] = useState(false);
   const [disablePast, setDisablePast] = useState(false);
@@ -29,6 +47,45 @@ function DateModal({ nav, router }) {
   const [showNeighboringMonth, setShowNeighboringMonth] = useState(true);
   const [locale, setLocale] = useState("ru");
   const [size, setSize] = useState("m");
+  const [date, setDate] = useState({});
+  const [todayInfo, setTodayInfo] = useState("");
+  const [result, setResult] = useState(false)
+
+  useEffect(() => {
+    if(!result) {
+      setDate(getDate());
+      //console.log(todayInfo.title);
+      getTodayInfo();
+      setResult(true);
+    }
+  });
+
+  function getDate() {
+    let date = new Date();
+    let month = Number(date.getMonth());
+    month = months_list[month].toLowerCase();
+    return {date: date.getDate(), month: month, year: date.getFullYear()};
+  }
+
+  function getTodayInfo() {
+    let day = new Date();
+    let month = Number(day.getMonth());
+
+    axios.get(`https://dates.gate.petersburg.ru/memorable_dates/date/day/${day.getDate()}/month/${month}`, {
+      headers: {
+        Authorization: mainStorage.Authorization_token
+      }
+    })
+    .then(res => {
+      res.data[0].date = new Date(res.data[0].date).toLocaleDateString()
+      setTodayInfo(res.data[0]);
+    });
+  }
+
+  function changeDate(e) {
+    setValue(e);
+
+  }
 
   return (
     <ModalPage
@@ -57,10 +114,9 @@ function DateModal({ nav, router }) {
       settlingHeight={100}
     >
       <div className={style.topBlock}>
-        <div className={style.todaysDate}>Сегодня 19 июля 2022 года</div>
+        <div className={style.todaysDate}>Сегодня {date.date} {date.month} {date.year} года</div>
         <div className={style.event}>
-          19 июля 2003 года первая в мире операция по пересадке языка прошла
-          успешно
+        {todayInfo.date} {todayInfo.title}
         </div>
       </div>
       <FormItem>
@@ -68,7 +124,7 @@ function DateModal({ nav, router }) {
           <Calendar
             className={style.calendarSize}
             value={value}
-            onChange={setValue}
+            onChange={(e) => changeDate(e)}
             enableTime={enableTime}
             disablePast={disablePast}
             disableFuture={disableFuture}

@@ -37,21 +37,7 @@ const axios = require("axios");
 function WeatherPanel({ router }) {
   const platform = useSelector((state) => state.main.platform);
   const mainStorage = useSelector((state) => state.main);
-  const [result, setResult] = useState(false);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!result) {
-      getWeather();
-      setResult(true);
-    }
-  }, {});
-
-  async function getWeather() {
-    const { data } = await axios.get("weather.get");
-
-    dispatch(set({ key: "weather", value: data.info.weather }));
-  }
 
   function timeConverterHourly(UNIX_timestamp) {
     let a = new Date(UNIX_timestamp * 1000),

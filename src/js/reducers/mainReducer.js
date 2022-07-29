@@ -1,13 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 export const mainReducer = createSlice({
   name: "main",
   initialState: {
+    Authorization_token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJ2a2lkMDAwMDAwMDAwIiwiZXhwIjoxNjczNzAyNzkyfQ.yHAeZTBMW8t5O2cWGW0rCVuce_Qlm1loQn3grQbN8OE",
     platform: "",
     isDesktop: false,
     theme: "light",
     hasHeader: false,
-    infoUser: { name: "Загрузка..." },
+    infoUser: {name: "Загрузка..."},
+    baseInfo: {
+      weather: {
+        day: 0,
+        min: 0,
+        max: 0,
+        night: 0,
+        eve: 0,
+        morn: 0
+      },
+      time: 0,
+      day: 0,
+      month: "",
+      week_day: ""
+    },
+    restaurants: [],
+    filter: {
+      sort: '',
+      category: ''
+    },
     weather: {
       lat: "Загрузка",
       lon: "Загрузка",
@@ -108,5 +128,5 @@ export const mainReducer = createSlice({
   },
 });
 
-export const { set } = mainReducer.actions;
+export const {set} = mainReducer.actions;
 export default mainReducer.reducer;

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import { withRouter } from "@reyzitwo/react-router-vkminiapps";
 import style from "./base.module.scss";
 
-import { Group, PanelHeader, PanelHeaderButton, VKCOM } from "@vkontakte/vkui";
+import { Group, PanelHeader, PanelHeaderButton, ScreenSpinner, VKCOM } from "@vkontakte/vkui";
 
 import {
   Icon28CalendarOutline,
@@ -16,9 +16,31 @@ import culturalHeritage from "../../../../img/icon/culturalHeritage.svg";
 import religion from "../../../../img/icon/religion.svg";
 
 import queryString from "query-string";
+import {set} from "../../../reducers/mainReducer";
+
+const axios = require('axios');
 
 function HomePanel({ router }) {
+  const dispatch = useDispatch();
   const platform = useSelector((state) => state.main.platform);
+  const mainStorage = useSelector((state) => state.main);
+  const [weather, setWeather] = useState({});
+  const [date, setDate] = useState({});
+
+  useEffect(() => {
+    if(mainStorage.baseInfo.loaded === undefined) {
+      init();
+    }
+  }, {});
+
+  async function init() {
+    router.toPopout(<ScreenSpinner/>);
+    const {data} = await axios.get('init');
+    data.info.loaded = true;
+    dispatch(set({key: "baseInfo", value: data.info}));
+    dispatch(set({ key: "weather", value: data.weather }));
+    router.toPopout();
+  }
 
   return (
     <>
@@ -51,10 +73,10 @@ function HomePanel({ router }) {
               />
             </div>
             <div className={style.blockInfo}>
-              <div className={style.titleInfo}>20°</div>
+              <div className={style.titleInfo}>{Number(mainStorage.baseInfo.weather.day).toFixed(0)}°</div>
               <div className={style.blockDescInfo}>
-                <div className={style.descInfo}>вечером 16°</div>
-                <div className={style.descInfo}>ночью 9°</div>
+                <div className={style.descInfo}>вечером {Number(mainStorage.baseInfo.weather.eve).toFixed(0)}°</div>
+                <div className={style.descInfo}>ночью {Number(mainStorage.baseInfo.weather.night).toFixed(0)}°</div>
               </div>
             </div>
           </div>
@@ -70,9 +92,9 @@ function HomePanel({ router }) {
               />
             </div>
             <div className={style.blockInfo}>
-              <div className={style.titleInfo}>5 июня</div>
+              <div className={style.titleInfo}>{mainStorage.baseInfo.day} {(mainStorage.baseInfo.month).toLowerCase()}</div>
               <div className={style.blockDescInfo}>
-                <div className={style.descInfo}>воскресенье</div>
+                <div className={style.descInfo}>{mainStorage.baseInfo.week_day}</div>
               </div>
             </div>
           </div>
